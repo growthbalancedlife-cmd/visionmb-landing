@@ -1178,27 +1178,27 @@
       <p class="section-body">Not sure where to begin? This form routes you to exactly the right service, product, or conversation. Takes 3 minutes. Changes everything.</p>
     </div>
     <div class="eval-form reveal">
-      <form action="https://formsubmit.co/vision4futureic@gmail.com" method="POST">
+      <form onsubmit="handleFormSubmit(event)">
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">First Name *</label>
-            <input type="text" class="form-input" placeholder="Your first name" required/>
+            <input type="text" name="first_name" class="form-input" placeholder="Your first name" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name *</label>
-            <input type="text" class="form-input" placeholder="Your last name" required/>
+            <input type="text" name="last_name" class="form-input" placeholder="Your last name" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Email Address *</label>
-            <input type="email" class="form-input" placeholder="your@email.com" required/>
+            <input type="email" name="email" class="form-input" placeholder="your@email.com" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Business / Organization</label>
-            <input type="text" class="form-input" placeholder="Company name (if applicable)"/>
+            <input type="text" name="organization" class="form-input" placeholder="Company name (if applicable)"/>
           </div>
           <div class="form-group form-full">
             <label class="form-label">Which brand are you most interested in? *</label>
-            <select class="form-select" required>
+            <select name="brand_interest" class="form-select" required>
               <option value="" disabled selected>Select a brand or service</option>
               <option>The Student & The Teacher — AI Systems / Strategy / Education</option>
               <option>D.R.O.P Kitchen — Private Chef / Events / Food Products</option>
@@ -1209,7 +1209,7 @@
           </div>
           <div class="form-group form-full">
             <label class="form-label">What's your primary goal? *</label>
-            <select class="form-select" required>
+            <select name="primary_goal" class="form-select" required>
               <option value="" disabled selected>Select your goal</option>
               <option>Build or rebrand a business identity</option>
               <option>Create and sell digital products</option>
@@ -1222,11 +1222,11 @@
           </div>
           <div class="form-group form-full">
             <label class="form-label">Tell us more about your project or vision</label>
-            <textarea class="form-textarea" placeholder="Describe what you're working on, what you need, and what success looks like for you. The more detail, the better we can serve you."></textarea>
+            <textarea name="project_vision" class="form-textarea" placeholder="Describe what you're working on, what you need, and what success looks like for you. The more detail, the better we can serve you."></textarea>
           </div>
           <div class="form-group">
             <label class="form-label">Budget Range</label>
-            <select class="form-select">
+            <select name="budget_range" class="form-select">
               <option value="" disabled selected>Select a range</option>
               <option>Under $100</option>
               <option>$100 – $500</option>
@@ -1238,7 +1238,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Timeline</label>
-            <select class="form-select">
+            <select name="timeline" class="form-select">
               <option value="" disabled selected>When do you need this?</option>
               <option>ASAP (within 2 weeks)</option>
               <option>Within 1 month</option>
@@ -1249,7 +1249,7 @@
           </div>
           <div class="form-group form-full">
             <label class="form-label">How did you find Vision:MB?</label>
-            <select class="form-select">
+            <select name="discovery_source" class="form-select">
               <option value="" disabled selected>Select one</option>
               <option>Word of mouth / referral</option>
               <option>Social media</option>
@@ -1327,7 +1327,7 @@
         Brand strategy insights. Subscriber-only discounts. One newsletter. Real value. Always.
       </p>
       <form class="nl-form" onsubmit="handleNewsletterSubmit(event)">
-        <input type="email" class="nl-input" placeholder="Enter your email address" required/>
+        <input type="email" name="subscriber_email" class="nl-input" placeholder="Enter your email address" required/>
         <button type="submit" class="nl-btn">Subscribe</button>
       </form>
       <p class="nl-note">No spam. No noise. Unsubscribe any time. We respect your inbox the way we respect our craft.</p>
@@ -1385,6 +1385,10 @@
 </footer>
 
 <script>
+  // ── DATA ROUTING INFRASTRUCTURE (OPTION 1: FORMSUBMIT AJAX ROUTING) ──
+  const EVAL_FORM_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
+  const NEWSLETTER_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
+
   // Scroll Reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1400,23 +1404,65 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Form Submit
+  // Form Submit Execution
   function handleFormSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    
+    // Capture structural user inputs via FormData API
+    const formData = new FormData(form);
+    const dataPayload = Object.fromEntries(formData.entries());
+
+    // Inject explicit structural metadata for inbox organization
+    dataPayload['_subject'] = "New Vision:MB Client Evaluation Submission";
+
+    // Trigger premium instantaneous visual UX transition
     btn.textContent = "✓ Submitted — We'll be in touch within 48 hours";
     btn.style.background = 'linear-gradient(135deg, #2D6A4F, #1a4a30)';
     btn.style.color = '#fff';
     btn.disabled = true;
+
+    // Dispatch payload data to backend securely
+    fetch(EVAL_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(dataPayload)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Form data captured successfully:', data))
+    .catch(error => console.error('Ecosystem submission fault:', error));
   }
 
-  // Newsletter Submit
+  // Newsletter Submit Execution
   function handleNewsletterSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.nl-btn');
+    const form = e.target;
+    const btn = form.querySelector('.nl-btn');
+    
+    const formData = new FormData(form);
+    const dataPayload = Object.fromEntries(formData.entries());
+
+    dataPayload['_subject'] = "New Vision:MB Dispatch Subscription";
+
     btn.textContent = "✓ You're In";
     btn.style.background = '#2D6A4F';
     btn.disabled = true;
+
+    fetch(NEWSLETTER_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(dataPayload)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Newsletter subscription successful:', data))
+    .catch(error => console.error('Newsletter system fault:', error));
   }
 
   // Nav active state
