@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vision:MB Ecosystem | Where Vision Becomes Legacy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #9A7A2E;
+      --black: #0A0A0A;
+      --deep: #111111;
+      --charcoal: #1C1C1C;
+      --slate: #2A2A2A;
+      --mist: #F5F4F0;
+      --white: #FFFFFF;
+      --accent-green: #2D6A4F;
+      --accent-rust: #8B3A2A;
+      --accent-blue: #1A3A5C;
+      --text-light: #B0A898;
+      --radius: 4px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--deep); }
+    .section-slate { background: var(--charcoal); }
+    .gold { color: var(--gold); }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+    .divider-center { margin: 1.5rem auto; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+    }
+    .btn-gold:hover { background: linear-gradient(135deg, var(--gold-light), var(--gold)); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 0.72rem; padding: 10px 22px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(44,106,79,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, #0A0A0A 0%, #0D0D0D 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: 
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--gold);
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-headline em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .stat-item { text-align: left; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--gold);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      padding: 0 2rem;
+    }
+    .marquee-track span.dot::after { content: ' ◆ '; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── ECOSYSTEM OVERVIEW ── */
+    .ecosystem-intro { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      color: var(--text-light);
+      line-height: 1.9;
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+    .eco-card {
+      background: var(--deep);
+      padding: 3rem 2.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .eco-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: var(--transition);
+    }
+    .eco-card:hover::before { transform: scaleY(1); }
+    .eco-card:hover { background: #161616; }
+    .eco-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.15);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .eco-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .eco-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .eco-desc { color: var(--text-light); font-size: 0.88rem; line-height: 1.8; }
+
+    /* ── BRAND SECTION HEADERS ── */
+    .brand-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    .brand-header.reverse { direction: rtl; }
+    .brand-header.reverse > * { direction: ltr; }
+    .brand-accent-block {
+      position: relative;
+      padding: 3rem;
+      background: var(--slate);
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .brand-accent-block::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; right: -8px;
+      width: 100%; height: 100%;
+      border: 1px solid rgba(201,168,76,0.3);
+      pointer-events: none;
+    }
+    .brand-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .brand-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-light);
+      line-height: 1.4;
+    }
+    .brand-meta {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; gap: 2rem;
+    }
+    .brand-meta-item { font-size: 0.78rem; color: var(--text-light); }
+    .brand-meta-item strong { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 2px; }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .service-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .service-icon {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .service-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .service-desc { font-size: 0.83rem; color: var(--text-light); line-height: 1.8; }
+    .service-price {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-list { max-width: 780px; margin: 3rem auto 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 1.5rem 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--gold);
+      transition: var(--transition); flex-shrink: 0;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--black); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a p {
+      padding-bottom: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.88rem;
+      line-height: 1.9;
+    }
+
+    /* ── CONNECT / CTA SECTION ── */
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .connect-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .connect-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+    .connect-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .connect-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .connect-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-wrap {
+      max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    .nl-form {
+      display: flex; gap: 0; margin-top: 2rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .nl-input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: none; outline: none;
+      padding: 14px 20px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+    }
+    .nl-input::placeholder { color: var(--text-light); }
+    .nl-btn {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 14px 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nl-btn:hover { background: var(--gold-light); }
+    .nl-note { font-size: 0.72rem; color: var(--text-light); margin-top: 1rem; }
+
+    /* ── CLIENT EVAL FORM ── */
+    .eval-form {
+      max-width: 700px; margin: 3rem auto 0;
+      background: var(--charcoal);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: var(--radius);
+      padding: 3rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); }
+    .form-input, .form-select, .form-textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(201,168,76,0.5); }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--charcoal); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 16px; font-size: 0.85rem; }
+
+    /* ── TESTIMONIAL / SOCIAL PROOF ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem; border-radius: var(--radius);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: rgba(201,168,76,0.2);
+      position: absolute; top: -10px; left: 20px;
+      line-height: 1;
+    }
+    .testimonial-text { font-size: 0.88rem; color: var(--text-light); line-height: 1.9; margin-bottom: 1.5rem; padding-top: 1rem; }
+    .testimonial-author { font-size: 0.8rem; font-weight: 600; }
+    .testimonial-role { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; }
+    .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.8rem; }
+
+    /* ── UPCOMING / NEW RELEASES ── */
+    .releases-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .release-card {
+      background: var(--deep);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .release-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      height: 2px; width: 0;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+    .release-card:hover::after { width: 100%; }
+    .release-status {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .status-new { background: rgba(44,106,79,0.25); color: #5DAA88; border: 1px solid rgba(44,106,79,0.4); }
+    .status-soon { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+    .status-hot { background: rgba(139,58,42,0.25); color: #E07060; border: 1px solid rgba(139,58,42,0.4); }
+    .release-name { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .release-brand { font-size: 0.72rem; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.6rem; }
+    .release-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; }
+
+    /* ── B2B STRIP ── */
+    .b2b-strip {
+      background: linear-gradient(135deg, #0D1A0F, #0A1204, #0A0A0A);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--gold); margin-bottom: 1rem;
+    }
+    .footer-bio { font-size: 0.82rem; color: var(--text-light); line-height: 1.9; }
+    .footer-heading {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem; font-weight: 600;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .footer-links a {
+      font-size: 0.82rem; color: var(--text-light);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { font-size: 0.72rem; color: var(--text-light); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.72rem; color: var(--text-light); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ── BRAND SECTION SPECIFIC COLORS ── */
+    .brand-vmb .tag { color: var(--gold); border-color: var(--gold-dark); }
+    .brand-drop .tag { color: #5DAA88; border-color: #2D6A4F; }
+    .brand-drop .divider { background: linear-gradient(90deg, #2D6A4F, transparent); }
+    .brand-photo .tag { color: #7A9CC0; border-color: #1A3A5C; }
+    .brand-photo .divider { background: linear-gradient(90deg, #1A3A5C, transparent); }
+
+    /* ── SECTION SEPARATORS ── */
+    .section-sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+    }
+
+    /* ── SCROLL REVEAL CLASSES (JS-driven) ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-headline { font-size: 2.8rem; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .ecosystem-grid { grid-template-columns: 1fr; }
+      .brand-header { grid-template-columns: 1fr; gap: 2rem; }
+      .brand-header.reverse { direction: ltr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .nl-form { flex-direction: column; border-radius: 4px; }
+      .nl-btn { border-radius: 0 0 4px 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Vision<span>:MB</span></a>
+    <ul class="nav-links">
+      <li><a href="#ecosystem">Ecosystem</a></li>
+      <li><a href="#the-student">Student & Teacher</a></li>
+      <li><a href="#drop-kitchen">D.R.O.P Kitchen</a></li>
+      <li><a href="#montyb-photo">Photography</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <a href="#client-eval" class="btn btn-gold nav-cta">Start Here</a>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Vision:MB Ecosystem — Minneapolis, MN</div>
+      <h1 class="hero-headline">
+        Where <em>Vision</em><br/>Becomes<br/>Legacy.
+      </h1>
+      <p class="hero-sub">
+        Vision:MB is a multi-brand creative ecosystem — fusing behavioral science, brand strategy, 
+        culinary artistry, and visual storytelling into one unified force. 
+        We don't just build brands. We architect experiences that move people.
+      </p>
+      <div class="btn-group">
+        <a href="#ecosystem" class="btn btn-gold">Explore the Ecosystem</a>
+        <a href="#client-eval" class="btn btn-outline">Work With Us</a>
+        <a href="#products" class="btn btn-ghost">Browse Products</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Distinct Brands</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Creative Range</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Unified Vision</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="dot">Vision:MB Agency</span>
+    <span class="dot">D.R.O.P Kitchen</span>
+    <span class="dot">MontyB Photography</span>
+    <span class="dot">The Student & The Teacher</span>
+    <span class="dot">AI Prompt Systems</span>
+    <span class="dot">Brand Strategy</span>
+    <span class="dot">Culinary Excellence</span>
+    <span class="dot">Visual Storytelling</span>
+    <span class="dot">Digital Products</span>
+    <span class="dot">Notion Architecture</span>
+    <span class="dot">Behavioral Design</span>
+    <span class="dot">Vision:MB Agency</span>
+    <span class="dot">D.R.O.P Kitchen</span>
+    <span class="dot">MontyB Photography</span>
+    <span class="dot">The Student & The Teacher</span>
+    <span class="dot">AI Prompt Systems</span>
+    <span class="dot">Brand Strategy</span>
+    <span class="dot">Culinary Excellence</span>
+    <span class="dot">Visual Storytelling</span>
+    <span class="dot">Digital Products</span>
+    <span class="dot">Notion Architecture</span>
+    <span class="dot">Behavioral Design</span>
+  </div>
+</div>
+
+<section class="section" id="ecosystem">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">The Ecosystem</div>
+      <h2 class="section-title">Three Brands. <em class="gold">One Architecture.</em></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-body">
+        Built on the principles of behavioral psychology, neuroscience, and creative mastery — 
+        the Vision:MB ecosystem is engineered so that every brand feeds the next. 
+        Content becomes IP. IP becomes product. Product builds community. Community fuels legacy.
+      </p>
+    </div>
+
+    <div class="ecosystem-grid">
+      <div class="eco-card reveal reveal-delay-1">
+        <div class="eco-num">01</div>
+        <div class="eco-brand">Education & Strategy</div>
+        <div class="eco-name">The Student & The Teacher</div>
+        <p class="eco-desc">The intellectual engine. AI systems, Notion architecture, brand strategy toolkits, and behavioral science frameworks that teach professionals to think and build at the highest level.</p>
+      </div>
+      <div class="eco-card reveal reveal-delay-2">
+        <div class="eco-num">02</div>
+        <div class="eco-brand">Culinary Arts</div>
+        <div class="eco-name">D.R.O.P Kitchen</div>
+        <p class="eco-desc">Diverse Recipes. Outstanding Palate. A premium culinary brand offering private chef services, signature sauces, seasonings, and immersive food experiences rooted in global tradition and local culture.</p>
+      </div>
+      <div class="eco-card reveal reveal-delay-3">
+        <div class="eco-num">03</div>
+        <div class="eco-brand">Visual Storytelling</div>
+        <div class="eco-name">MontyB Photography</div>
+        <p class="eco-desc">Street. Portrait. Food. Lifestyle. Journalism. A documentary eye that captures the soul of a moment — providing brands, individuals, and publications with imagery that commands attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section class="section section-alt brand-vmb" id="the-student">
+  <div class="container">
+    <div class="brand-header reveal">
+      <div class="brand-header-text">
+        <div class="tag">Vision:MB — Brand 01</div>
+        <h2 class="section-title serif">The Student<br/>&amp; The Teacher</h2>
+        <div class="divider"></div>
+        <p class="section-body">
+          The philosophical core of the Vision:MB ecosystem. This brand is built on a timeless truth: 
+          the best teachers never stop being students. Here, knowledge is packaged into systems — 
+          AI prompt libraries, brand strategy kits, Notion workspaces, and behavioral science 
+          frameworks — all engineered to help creators, entrepreneurs, and brands operate at 
+          an elite level. Every product is informed by neuroscience, behavioral economics, 
+          and real-world application.
+        </p>
+        <div class="btn-group">
+          <a href="#products" class="btn btn-gold">Browse Digital Products</a>
+          <a href="#connect" class="btn btn-outline">B2B Inquiry</a>
+        </div>
+      </div>
+      <div class="brand-accent-block">
+        <span class="brand-icon">🧠</span>
+        <div class="brand-tagline">"Every master was once a student who refused to stop learning."</div>
+        <div class="brand-meta">
+          <div class="brand-meta-item">
+            <strong>Focus</strong>
+            Education · Strategy · Systems
+          </div>
+          <div class="brand-meta-item">
+            <strong>Format</strong>
+            Digital Products · Consulting
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tag reveal">Services Offered</div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">⚡</div>
+        <div class="service-title">AI Prompt Engineering Systems</div>
+        <p class="service-desc">Curated, behavior-informed prompt libraries and frameworks for entrepreneurs, creatives, and businesses. Built for repeatability and depth — not just surface-level outputs.</p>
+        <div class="service-price">Starting at $27 — Digital Download</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🗂️</div>
+        <div class="service-title">Notion Architecture & Templates</div>
+        <p class="service-desc">Full business operating systems, content pipelines, client management dashboards, and brand strategy hubs built inside Notion. Ready to install, customize, and scale.</p>
+        <div class="service-price">Starting at $47 — Instant Access</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">🧬</div>
+        <div class="service-title">Brand Strategy Client Kits</div>
+        <p class="service-desc">Deep-dive brand positioning, voice and identity systems, competitive analysis frameworks, and go-to-market strategy tools grounded in behavioral psychology.</p>
+        <div class="service-price">Starting at $97 — Full Kit</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">📡</div>
+        <div class="service-title">Behavioral Design Consulting</div>
+        <p class="service-desc">1-on-1 and group consulting sessions applying neuroscience and behavioral economics to brand decisions, content strategy, UX copy, and audience psychology.</p>
+        <div class="service-price">Starting at $250 — Per Session</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">📘</div>
+        <div class="service-title">Creator Handbooks & Guides</div>
+        <p class="service-desc">Premium PDF guides on building digital products, designing brand systems, and monetizing expertise — written from lived experience and backed by science.</p>
+        <div class="service-price">Starting at $17 — PDF Download</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">🏢</div>
+        <div class="service-title">B2B Brand Consulting Retainer</div>
+        <p class="service-desc">Monthly retainer for businesses needing ongoing strategic support — content systems, brand identity maintenance, AI integration, and growth architecture.</p>
+        <div class="service-price">From $500/mo — Contact for Custom Quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section class="section section-slate brand-drop" id="drop-kitchen">
+  <div class="container">
+    <div class="brand-header reverse reveal">
+      <div class="brand-header-text">
+        <div class="tag">Vision:MB — Brand 02</div>
+        <h2 class="section-title serif">D.R.O.P<br/>Kitchen</h2>
+        <div class="divider" style="background: linear-gradient(90deg, #2D6A4F, transparent);"></div>
+        <p class="section-body">
+          <strong class="gold">D</strong>iverse Recipes. <strong class="gold">O</strong>utstanding <strong class="gold">P</strong>alate.<br/><br/>
+          D.R.O.P Kitchen is the culinary arm of the Vision:MB ecosystem — and it brings the 
+          same philosophy of mastery and intentionality to the table. As a private chef service 
+          and growing food brand, D.R.O.P Kitchen bridges the gap between world-class culinary 
+          tradition and the personal, intimate dining experience. From intimate dinner events to 
+          signature sauces inspired by global cuisines, every dish tells a story and every flavor 
+          is crafted with intention.
+        </p>
+        <div class="btn-group">
+          <a href="#client-eval" class="btn btn-gold">Book a Private Event</a>
+          <a href="#connect" class="btn btn-outline">Wholesale / B2B</a>
+        </div>
+      </div>
+      <div class="brand-accent-block" style="border-color: rgba(44,106,79,0.3);">
+        <span class="brand-icon">🍽️</span>
+        <div class="brand-tagline" style="color: #5DAA88;">"Every culture carries its story in its food. We serve both."</div>
+        <div class="brand-meta">
+          <div class="brand-meta-item">
+            <strong>Focus</strong>
+            Private Chef · Food Products
+          </div>
+          <div class="brand-meta-item">
+            <strong>Reach</strong>
+            Minneapolis & Nationwide
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tag reveal" style="color: #5DAA88; border-color: #2D6A4F;">Services & Offerings</div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🍴</div>
+        <div class="service-title">Private Chef Experience</div>
+        <p class="service-desc">Exclusive in-home and event dining experiences. Menu designed around your preferences, dietary needs, and occasion. From intimate couples dinners to executive gatherings.</p>
+        <div class="service-price" style="color: #5DAA88;">Starting at $300 — Contact for Quote</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🫙</div>
+        <div class="service-title">Signature Sauces & Seasonings</div>
+        <p class="service-desc">Small-batch artisan sauces and spice blends inspired by world cuisines — from North African harissa blends to Midwest-rooted BBQ traditions. Online and local availability.</p>
+        <div class="service-price" style="color: #5DAA88;">Shop Online — Coming Soon</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🎪</div>
+        <div class="service-title">Pop-Up Dining Events</div>
+        <p class="service-desc">Curated, themed dining pop-ups in the Minneapolis area. Each event is a full sensory experience — food, ambiance, and storytelling woven together into an unforgettable evening.</p>
+        <div class="service-price" style="color: #5DAA88;">Seasonal — Join the Waitlist</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">📸</div>
+        <div class="service-title">Food Styling & Photography</div>
+        <p class="service-desc">Working in direct partnership with MontyB Photography — offering premium food styling and professional photography for brands, restaurants, and cookbooks.</p>
+        <div class="service-price" style="color: #5DAA88;">Bundle Available with MontyB</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🤝</div>
+        <div class="service-title">Corporate Catering & Partnerships</div>
+        <p class="service-desc">Brand partnerships, corporate catering, restaurant consulting, and culinary content creation for food brands seeking authentic storytelling and elevated presentation.</p>
+        <div class="service-price" style="color: #5DAA88;">B2B Pricing Available</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">📖</div>
+        <div class="service-title">Digital Cookbooks & Recipe Collections</div>
+        <p class="service-desc">Curated digital cookbooks featuring global recipes, chef notes, sourcing guides, and the cultural context behind every dish. Sold as premium digital downloads.</p>
+        <div class="service-price" style="color: #5DAA88;">Coming Q3 2026 — Pre-Register</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section class="section section-alt brand-photo" id="montyb-photo">
+  <div class="container">
+    <div class="brand-header reveal">
+      <div class="brand-header-text">
+        <div class="tag">Vision:MB — Brand 03</div>
+        <h2 class="section-title serif">MontyB<br/>Photography</h2>
+        <div class="divider" style="background: linear-gradient(90deg, #1A3A5C, transparent);"></div>
+        <p class="section-body">
+          A photograph is the most honest form of communication — it doesn't argue, it reveals. 
+          MontyB Photography is the visual storytelling arm of the Vision:MB ecosystem, 
+          operating across street photography, portraiture, food styling, lifestyle, editorial, 
+          and photojournalism. Every frame is composed with intentionality — capturing not just 
+          what's seen, but what's felt. Whether serving brands that need commercial imagery 
+          or individuals seeking timeless portraits, MontyB Photography delivers work that 
+          speaks before a single word is read.
+        </p>
+        <div class="btn-group">
+          <a href="#client-eval" class="btn btn-gold">Book a Session</a>
+          <a href="#connect" class="btn btn-outline">Commercial Inquiry</a>
+        </div>
+      </div>
+      <div class="brand-accent-block" style="border-color: rgba(26,58,92,0.5);">
+        <span class="brand-icon">📷</span>
+        <div class="brand-tagline" style="color: #7A9CC0;">"A frame held still. A story told forever."</div>
+        <div class="brand-meta">
+          <div class="brand-meta-item">
+            <strong>Specialties</strong>
+            Portrait · Food · Street · Editorial
+          </div>
+          <div class="brand-meta-item">
+            <strong>Base</strong>
+            Minneapolis, MN · Travel Available
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tag reveal" style="color: #7A9CC0; border-color: #1A3A5C;">Photography Services</div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">👤</div>
+        <div class="service-title">Portrait & Brand Photography</div>
+        <p class="service-desc">Professional headshots, personal branding sessions, and executive portraits. Built for LinkedIn, press kits, websites, and media. You'll look how you deserve to be seen.</p>
+        <div class="service-price" style="color: #7A9CC0;">Starting at $150 — Session Rate</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🍲</div>
+        <div class="service-title">Food & Culinary Photography</div>
+        <p class="service-desc">Premium food photography for restaurants, food brands, chefs, and cookbooks. Styled, lit, and composed to make every dish irresistible. Pairs seamlessly with D.R.O.P Kitchen services.</p>
+        <div class="service-price" style="color: #7A9CC0;">Starting at $200 — Half Day</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🌆</div>
+        <div class="service-title">Street & Documentary Photography</div>
+        <p class="service-desc">Editorial and documentary work capturing the culture, energy, and humanity of Minneapolis and beyond. Available for editorial licensing, exhibitions, and publication.</p>
+        <div class="service-price" style="color: #7A9CC0;">Custom Licensing — Contact</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🎨</div>
+        <div class="service-title">Lifestyle & Brand Campaign Shoots</div>
+        <p class="service-desc">Full-scale lifestyle campaigns for product brands, apparel, wellness companies, and content creators. Concept-to-delivery production with creative direction included.</p>
+        <div class="service-price" style="color: #7A9CC0;">Starting at $500 — Full Day</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🤝</div>
+        <div class="service-title">Content Creation Packages</div>
+        <p class="service-desc">Monthly content retainers for brands and creators — consistent, high-quality social content, product shots, and lifestyle imagery delivered on schedule.</p>
+        <div class="service-price" style="color: #7A9CC0;">From $350/mo — Retainer</div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🏢</div>
+        <div class="service-title">B2B Content Master Retainer</div>
+        <p class="service-desc">Ongoing visual asset deployment across physical and remote structures to support high-ticket brand positioning workflows.</p>
+        <div class="service-price" style="color: #7A9CC0;">Contact for Quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section class="section" id="products">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">Digital Products & Shop</div>
+      <h2 class="section-title">New Releases &amp; <em class="gold">Hot Links</em></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-body">Instantly downloadable products. No waiting. No shipping. Just tools that work — built by someone who uses them every single day.</p>
+    </div>
+
+    <div class="tag reveal" style="margin-top: 1rem;">🔥 New &amp; Upcoming Releases</div>
+    <div class="releases-grid">
+      <div class="release-card reveal reveal-delay-1">
+        <span class="release-status status-hot">🔥 Hot Release</span>
+        <div class="release-brand">The Student & The Teacher</div>
+        <div class="release-name">ENFJ Voice Master Prompt System</div>
+        <p class="release-desc">Advanced AI copywriting tool built for deep, repeatable authority and precision voice replication. ChatGPT & Claude compatible.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-2">
+        <span class="release-status status-new">✦ New Release</span>
+        <div class="release-brand">Vision:MB Ecosystem</div>
+        <div class="release-name">The Brand System Matrix</div>
+        <p class="release-desc">The primary master document engineered to unify visual execution and complex AI workflows across multi-brand structures.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-3">
+        <span class="release-status status-soon"> ◎ Coming Soon</span>
+        <div class="release-brand">D.R.O.P Kitchen</div>
+        <div class="release-name">Cin & Sug Culinary Line & Recipe Cards</div>
+        <p class="release-desc">Premium signature spice profiles and narrative layout cards fusing intentionality with world-class kitchen heritage.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="#newsletter" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.72rem;">Pre-Register →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-1">
+        <span class="release-status status-soon">◎ Coming Soon</span>
+        <div class="release-brand">The Student & The Teacher</div>
+        <div class="release-name">Archetypes & Systems: A Builder’s Guide</div>
+        <p class="release-desc">24-page foundational manual mapping high-leverage frameworks, including The Architects' Oath and The Stillness Protocol.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="#newsletter" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.72rem;">Join Waitlist →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-2">
+        <span class="release-status status-hot">🔥 Hot Release</span>
+        <div class="release-brand">Vision:MB Ecosystem</div>
+        <div class="release-name">The Curriculum Vol. 1</div>
+        <p class="release-desc">A complete archive package featuring strategic entries focused on behavioral automation, digital models, and systems operations.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-3">
+        <span class="release-status status-new">✦ New Release</span>
+        <div class="release-brand">Digital Engineering</div>
+        <div class="release-name">Healing Companion App</div>
+        <p class="release-desc">An elegant, reflection-driven interface tailored for individuals and clinicians seeking grounded behavioral workflows.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get Details →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-slate">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">Client Stories</div>
+      <h2 class="section-title">Words From the <em class="gold">Community</em></h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The prompt systems completely changed how I build content. I went from staring at a blank screen to producing in hours. The structural depth behind it is on another level.</p>
+        <div class="testimonial-author">D. Coleman</div>
+        <div class="testimonial-role">Creative Director · Chicago, IL</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Monty handled our brand campaign production masterfully. The visual direction made our presence immediately signal premium positioning without feeling artificial.</p>
+        <div class="testimonial-author">L. Reyes</div>
+        <div class="testimonial-role">Brand Operator · Minneapolis, MN</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The D.R.O.P Kitchen private experience was unforgettable. Every dish had a deep architectural intent. This is far beyond standard dining — it is true environmental immersion.</p>
+        <div class="testimonial-author">M. Washington</div>
+        <div class="testimonial-role">Operations Lead · Twin Cities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="b2b-strip" id="b2b">
+  <div class="container">
+    <div class="ecosystem-intro" style="margin-bottom: 2rem;">
+      <div class="tag">B2B Partnerships</div>
+      <h2 class="section-title reveal">Ready to Build <em class="gold">Together?</em></h2>
+      <p class="section-body reveal" style="margin-top: 1rem;">
+        Vision:MB actively seeks strategic B2B partnerships across brand stewardship, culinary activations, 
+        visual systems, and digital product collaborations. Let's align on an engineering timeline.
+      </p>
+    </div>
+    <div class="btn-group" style="justify-content: center;">
+      <a href="mailto:vision4futureic@gmail.com" class="btn btn-gold">Email Us Directly</a>
+      <a href="#client-eval" class="btn btn-outline">Start an Evaluation</a>
+      <a href="#connect" class="btn btn-ghost">More Connection Options</a>
+    </div>
+  </div>
+</div>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">FAQ</div>
+      <h2 class="section-title">Questions We <em class="gold">Hear Often</em></h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What exactly is the Vision:MB Ecosystem?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          <p>Vision:MB is a multi-brand creative ecosystem based in Minneapolis, MN. It houses three distinct brands — The Student & The Teacher (education and strategy), D.R.O.P Kitchen (culinary arts and private chef), and MontyB Photography (visual storytelling) — all operating under one unified philosophy: mastery, intentionality, and legacy-driven work. Each brand feeds the others, creating a full-spectrum creative and business service ecosystem.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          How do the three brands connect to each other?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          <p>By design. A D.R.O.P Kitchen dining event gets documented by MontyB Photography. The resulting content becomes brand IP, packaged into educational products through The Student & The Teacher. The cycle continues — content becomes IP, IP becomes products, products build community. Every brand is a spoke in the same wheel, turning together.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Do you work with clients outside of Minneapolis?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          <p>Absolutely. Digital products and strategic systems consulting are 100% remote digital models and available globally. Photography deployments are centered in Minneapolis but available for strategic travel. Private culinary bookings are regional focus with options for destination projects.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          How do I know which service is right for my business?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          <p>That's exactly what the Client Evaluation Form below is designed to answer. Fill it out with as much detail as you can — your goals, challenges, and timeline — and we'll respond within 48 hours with a personalized recommendation. No obligation, no pressure. Just clarity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-slate" id="client-eval">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">Client Evaluation</div>
+      <h2 class="section-title">Let's Find <em class="gold">Your Starting Point</em></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-body">Not sure where to begin? This form routes you to exactly the right service, product, or conversation. Takes 3 minutes. Changes everything.</p>
+    </div>
+    <div class="eval-form reveal">
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" class="form-input" placeholder="Your first name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input type="text" class="form-input" placeholder="Your last name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Business / Organization</label>
+            <input type="text" class="form-input" placeholder="Company name (if applicable)"/>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Which brand are you most interested in? *</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Select a brand or service</option>
+              <option>The Student & The Teacher — AI Systems / Strategy / Education</option>
+              <option>D.R.O.P Kitchen — Private Chef / Events / Food Products</option>
+              <option>MontyB Photography — Commercial / Portrait / Food Photography</option>
+              <option>Vision:MB — Full Ecosystem / B2B Partnership</option>
+              <option>I'm not sure — help me figure it out</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">What's your primary goal? *</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Select your goal</option>
+              <option>Build or rebrand a business identity</option>
+              <option>Create and sell digital products</option>
+              <option>Book a photography session or campaign</option>
+              <option>Host a private dining experience or event</option>
+              <option>Explore B2B partnership or collaboration</option>
+              <option>Subscribe to products or services on retainer</option>
+              <option>Just exploring — learning more about Vision:MB</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Tell us more about your project or vision</label>
+            <textarea class="form-textarea" placeholder="Describe what you're working on, what you need, and what success looks like for you. The more detail, the better we can serve you."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget Range</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select a range</option>
+              <option>Under $100</option>
+              <option>$100 – $500</option>
+              <option>$500 – $1,500</option>
+              <option>$1,500 – $5,000</option>
+              <option>$5,000+</option>
+              <option>Let's discuss</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Timeline</label>
+            <select class="form-select">
+              <option value="" disabled selected>When do you need this?</option>
+              <option>ASAP (within 2 weeks)</option>
+              <option>Within 1 month</option>
+              <option>1–3 months out</option>
+              <option>Planning ahead (3+ months)</option>
+              <option>Flexible / ongoing</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">How did you find Vision:MB?</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select one</option>
+              <option>Word of mouth / referral</option>
+              <option>Social media</option>
+              <option>Google / search</option>
+              <option>Gumroad marketplace</option>
+              <option>LinkedIn</option>
+              <option>Previous client / returning customer</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold form-submit">Submit My Evaluation →</button>
+        <p style="font-size: 0.72rem; color: var(--text-light); margin-top: 1rem; text-align: center;">We respond within 48 hours. Your information is never shared or sold.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="connect">
+  <div class="container">
+    <div class="ecosystem-intro reveal">
+      <div class="tag">Connect With Us</div>
+      <h2 class="section-title">Every Journey Starts <em class="gold">With One Move</em></h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="connect-grid">
+      <div class="connect-card reveal reveal-delay-1">
+        <div class="connect-icon">✉️</div>
+        <div class="connect-title">Strategic B2B Email</div>
+        <p class="connect-desc">Skip forms. Pitch explicit infrastructure integrations or architectural partnerships directly via secure pipeline.</p>
+        <a href="mailto:vision4futureic@gmail.com" class="btn btn-gold">vision4futureic@gmail.com</a>
+      </div>
+      <div class="connect-card reveal reveal-delay-2">
+        <div class="connect-icon">🛒</div>
+        <div class="connect-title">Gumroad Shop</div>
+        <p class="connect-desc">Browse fully active high-ticket system frameworks, libraries, preset arrays, and strategic tool manuals.</p>
+        <a href="https://gumroad.com" target="_blank" class="btn btn-outline">Visit the Shop →</a>
+      </div>
+      <div class="connect-card reveal reveal-delay-3">
+        <div class="connect-icon">👨‍🍳</div>
+        <div class="connect-title">Culinary Workflows</div>
+        <p class="connect-desc">Direct line for booking premium operations, experiential pop-up installations, and signature inventory curation.</p>
+        <a href="mailto:TheDropKitchen@outlook.com" class="btn btn-ghost">TheDropKitchen@outlook.com</a>
+      </div>
+      <div class="connect-card reveal reveal-delay-1">
+        <div class="connect-icon">💼</div>
+        <div class="connect-title">LinkedIn — Identity</div>
+        <p class="connect-desc">Connect on business strategy design, systems layout analysis, and cross-brand architecture updates.</p>
+        <a href="https://linkedin.com" target="_blank" class="btn btn-ghost">Connect on LinkedIn →</a>
+      </div>
+      <div class="connect-card reveal reveal-delay-2">
+        <div class="connect-icon">📋</div>
+        <div class="connect-title">Client Evaluation</div>
+        <p class="connect-desc">Establish alignment parameters. Use our diagnostic evaluation form to instantly route system requirements.</p>
+        <a href="#client-eval" class="btn btn-outline">Start Evaluation →</a>
+      </div>
+      <div class="connect-card reveal reveal-delay-3">
+        <div class="connect-icon">📰</div>
+        <div class="connect-title">Ecosystem Dispatch</div>
+        <p class="connect-desc">Secure early operational positioning. Priority alerts regarding upcoming system modules and specialized tracking resources.</p>
+        <a href="#newsletter" class="btn btn-gold">Subscribe Free →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="newsletter">
+  <div class="container">
+    <div class="newsletter-wrap reveal">
+      <div class="tag">The Vision:MB Dispatch</div>
+      <h2 class="section-title">Stay Inside <em class="gold">the Ecosystem</em></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-body">
+        Early access to product launches. Pop-up dining invites. Photography session openings. 
+        Brand strategy insights. Subscriber-only discounts. One newsletter. Real value. Always.
+      </p>
+      <form class="nl-form" onsubmit="handleNewsletterSubmit(event)">
+        <input type="email" class="nl-input" placeholder="Enter your email address" required/>
+        <button type="submit" class="nl-btn">Subscribe</button>
+      </form>
+      <p class="nl-note">No spam. No noise. Unsubscribe any time. We respect your inbox the way we respect our craft.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Vision:MB</div>
+        <p class="footer-bio">A multi-brand creative ecosystem based in Minneapolis, MN. Fusing behavioral science, culinary mastery, and visual storytelling into brands that endure. Where vision becomes legacy.</p>
+        <div style="margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-light);">📍 Minneapolis, Minnesota</div>
+        <div style="margin-top: 0.4rem; font-size: 0.72rem; color: var(--gold);">vision4futureic@gmail.com</div>
+      </div>
+      <div>
+        <div class="footer-heading">The Brands</div>
+        <ul class="footer-links">
+          <li><a href="#the-student">The Student & The Teacher</a></li>
+          <li><a href="#drop-kitchen">D.R.O.P Kitchen</a></li>
+          <li><a href="#montyb-photo">MontyB Photography</a></li>
+          <li><a href="#ecosystem">Ecosystem Overview</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Products & Shop</div>
+        <ul class="footer-links">
+          <li><a href="https://gumroad.com" target="_blank">Gumroad Shop</a></li>
+          <li><a href="#products">New Releases</a></li>
+          <li><a href="#products">Coming Soon</a></li>
+          <li><a href="#newsletter">Pre-Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Connect</div>
+        <ul class="footer-links">
+          <li><a href="#client-eval">Client Evaluation</a></li>
+          <li><a href="mailto:vision4futureic@gmail.com">B2B Email</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+          <li><a href="#connect">All Channels</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vision:MB Ecosystem. All rights reserved. Minneapolis, MN.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll Reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ Toggle
+  function toggleFAQ(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form Submit
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = "✓ Submitted — We'll be in touch within 48 hours";
+    btn.style.background = 'linear-gradient(135deg, #2D6A4F, #1a4a30)';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+
+  // Newsletter Submit
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.nl-btn');
+    btn.textContent = "✓ You're In";
+    btn.style.background = '#2D6A4F';
+    btn.disabled = true;
+  }
+
+  // Nav active state
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.borderBottomColor = 'rgba(201,168,76,0.25)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(201,168,76,0.15)';
+    }
+  });
+</script>
+</body>
+</html>
