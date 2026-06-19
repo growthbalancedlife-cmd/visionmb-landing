@@ -378,6 +378,94 @@
       font-weight: 600;
     }
 
+    /* ── ENFJ FEATURED CALLOUT ── */
+    .enfj-callout {
+      margin-top: 4rem;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .enfj-callout::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark), transparent);
+    }
+    .enfj-callout-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .enfj-callout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+    .enfj-callout-sub {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .enfj-products-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .enfj-product-card {
+      background: rgba(10,10,10,0.6);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .enfj-product-card:hover {
+      border-color: rgba(201,168,76,0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .enfj-product-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.25);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .enfj-product-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--white);
+    }
+    .enfj-product-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .enfj-product-cta {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .enfj-product-cta::after { content: ' →'; }
+
     /* ── FAQ ACCORDION ── */
     .faq-list { max-width: 780px; margin: 3rem auto 0; }
     .faq-item {
@@ -635,6 +723,7 @@
       .brand-header.reverse { direction: ltr; }
       .form-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .enfj-products-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -650,7 +739,7 @@
     <a href="#top" class="nav-logo">Vision<span>:MB</span></a>
     <ul class="nav-links">
       <li><a href="#ecosystem">Ecosystem</a></li>
-      <li><a href="#the-student">Student & Teacher</a></li>
+      <li><a href="#the-student">Student &amp; Teacher</a></li>
       <li><a href="#drop-kitchen">D.R.O.P Kitchen</a></li>
       <li><a href="#montyb-photo">Photography</a></li>
       <li><a href="#products">Products</a></li>
@@ -702,7 +791,7 @@
     <span class="dot">Vision:MB Agency</span>
     <span class="dot">D.R.O.P Kitchen</span>
     <span class="dot">MontyB Photography</span>
-    <span class="dot">The Student & The Teacher</span>
+    <span class="dot">The Student &amp; The Teacher</span>
     <span class="dot">AI Prompt Systems</span>
     <span class="dot">Brand Strategy</span>
     <span class="dot">Culinary Excellence</span>
@@ -713,7 +802,7 @@
     <span class="dot">Vision:MB Agency</span>
     <span class="dot">D.R.O.P Kitchen</span>
     <span class="dot">MontyB Photography</span>
-    <span class="dot">The Student & The Teacher</span>
+    <span class="dot">The Student &amp; The Teacher</span>
     <span class="dot">AI Prompt Systems</span>
     <span class="dot">Brand Strategy</span>
     <span class="dot">Culinary Excellence</span>
@@ -740,8 +829,8 @@
     <div class="ecosystem-grid">
       <div class="eco-card reveal reveal-delay-1">
         <div class="eco-num">01</div>
-        <div class="eco-brand">Education & Strategy</div>
-        <div class="eco-name">The Student & The Teacher</div>
+        <div class="eco-brand">Education &amp; Strategy</div>
+        <div class="eco-name">The Student &amp; The Teacher</div>
         <p class="eco-desc">The intellectual engine. AI systems, Notion architecture, brand strategy toolkits, and behavioral science frameworks that teach professionals to think and build at the highest level.</p>
       </div>
       <div class="eco-card reveal reveal-delay-2">
@@ -808,7 +897,7 @@
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">🗂️</div>
-        <div class="service-title">Notion Architecture & Templates</div>
+        <div class="service-title">Notion Architecture &amp; Templates</div>
         <p class="service-desc">Full business operating systems, content pipelines, client management dashboards, and brand strategy hubs built inside Notion. Ready to install, customize, and scale.</p>
         <div class="service-price">Starting at $47 — Instant Access</div>
       </div>
@@ -826,7 +915,7 @@
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">📘</div>
-        <div class="service-title">Creator Handbooks & Guides</div>
+        <div class="service-title">Creator Handbooks &amp; Guides</div>
         <p class="service-desc">Premium PDF guides on building digital products, designing brand systems, and monetizing expertise — written from lived experience and backed by science.</p>
         <div class="service-price">Starting at $17 — PDF Download</div>
       </div>
@@ -835,6 +924,40 @@
         <div class="service-title">B2B Brand Consulting Retainer</div>
         <p class="service-desc">Monthly retainer for businesses needing ongoing strategic support — content systems, brand identity maintenance, AI integration, and growth architecture.</p>
         <div class="service-price">From $500/mo — Contact for Custom Quote</div>
+      </div>
+    </div>
+
+    <!-- ── ENFJ FEATURED CALLOUT ── -->
+    <div class="enfj-callout reveal">
+      <div class="enfj-callout-label">✦ Featured Collection — Now Live</div>
+      <h3 class="enfj-callout-title">The ENFJ <em style="color: var(--gold); font-style: italic;">Voice System</em></h3>
+      <p class="enfj-callout-sub">
+        Three precision-engineered tools built exclusively for the ENFJ communicator — the visionary who leads with empathy, inspires through language, and builds movements with words. 
+        Available now on Gumroad as instant digital downloads.
+      </p>
+      <div class="enfj-products-row">
+        <a href="https://learnerguide.gumroad.com/l/enfj-prompt-pack" target="_blank" rel="noopener noreferrer" class="enfj-product-card">
+          <div class="enfj-product-num">01</div>
+          <div class="enfj-product-name">ENFJ Prompt Pack</div>
+          <p class="enfj-product-desc">The core AI prompt library — behavior-informed prompts mapped to ENFJ voice patterns for content, coaching copy, and brand communication.</p>
+          <div class="enfj-product-cta">Get on Gumroad</div>
+        </a>
+        <a href="https://learnerguide.gumroad.com/l/enfj-companion" target="_blank" rel="noopener noreferrer" class="enfj-product-card">
+          <div class="enfj-product-num">02</div>
+          <div class="enfj-product-name">ENFJ Companion</div>
+          <p class="enfj-product-desc">Your strategic companion system — frameworks and reference tools designed to deepen and extend the ENFJ voice across all platforms and formats.</p>
+          <div class="enfj-product-cta">Get on Gumroad</div>
+        </a>
+        <a href="https://learnerguide.gumroad.com/l/enfj-assistant" target="_blank" rel="noopener noreferrer" class="enfj-product-card">
+          <div class="enfj-product-num">03</div>
+          <div class="enfj-product-name">ENFJ Assistant</div>
+          <p class="enfj-product-desc">The operational layer — an AI assistant configuration built to think, respond, and create in authentic ENFJ voice with zero re-prompting needed.</p>
+          <div class="enfj-product-cta">Get on Gumroad</div>
+        </a>
+      </div>
+      <div class="btn-group" style="margin-top: 2rem;">
+        <a href="https://growthbalancedlife-cmd.github.io/enfj-voice/" target="_blank" rel="noopener noreferrer" class="btn btn-gold">View Full ENFJ Landing Page →</a>
+        <a href="https://learnerguide.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Browse All Products on Gumroad</a>
       </div>
     </div>
   </div>
@@ -873,13 +996,13 @@
           </div>
           <div class="brand-meta-item">
             <strong>Reach</strong>
-            Minneapolis & Nationwide
+            Minneapolis &amp; Nationwide
           </div>
         </div>
       </div>
     </div>
 
-    <div class="tag reveal" style="color: #5DAA88; border-color: #2D6A4F;">Services & Offerings</div>
+    <div class="tag reveal" style="color: #5DAA88; border-color: #2D6A4F;">Services &amp; Offerings</div>
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🍴</div>
@@ -889,7 +1012,7 @@
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🫙</div>
-        <div class="service-title">Signature Sauces & Seasonings</div>
+        <div class="service-title">Signature Sauces &amp; Seasonings</div>
         <p class="service-desc">Small-batch artisan sauces and spice blends inspired by world cuisines — from North African harissa blends to Midwest-rooted BBQ traditions. Online and local availability.</p>
         <div class="service-price" style="color: #5DAA88;">Shop Online — Coming Soon</div>
       </div>
@@ -901,19 +1024,19 @@
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">📸</div>
-        <div class="service-title">Food Styling & Photography</div>
+        <div class="service-title">Food Styling &amp; Photography</div>
         <p class="service-desc">Working in direct partnership with MontyB Photography — offering premium food styling and professional photography for brands, restaurants, and cookbooks.</p>
         <div class="service-price" style="color: #5DAA88;">Bundle Available with MontyB</div>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">🤝</div>
-        <div class="service-title">Corporate Catering & Partnerships</div>
+        <div class="service-title">Corporate Catering &amp; Partnerships</div>
         <p class="service-desc">Brand partnerships, corporate catering, restaurant consulting, and culinary content creation for food brands seeking authentic storytelling and elevated presentation.</p>
         <div class="service-price" style="color: #5DAA88;">B2B Pricing Available</div>
       </div>
       <div class="service-card reveal reveal-delay-3">
         <div class="service-icon" style="border-color: rgba(44,106,79,0.4); background: rgba(44,106,79,0.1);">📖</div>
-        <div class="service-title">Digital Cookbooks & Recipe Collections</div>
+        <div class="service-title">Digital Cookbooks &amp; Recipe Collections</div>
         <p class="service-desc">Curated digital cookbooks featuring global recipes, chef notes, sourcing guides, and the cultural context behind every dish. Sold as premium digital downloads.</p>
         <div class="service-price" style="color: #5DAA88;">Coming Q3 2026 — Pre-Register</div>
       </div>
@@ -964,25 +1087,25 @@
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">👤</div>
-        <div class="service-title">Portrait & Brand Photography</div>
+        <div class="service-title">Portrait &amp; Brand Photography</div>
         <p class="service-desc">Professional headshots, personal branding sessions, and executive portraits. Built for LinkedIn, press kits, websites, and media. You'll look how you deserve to be seen.</p>
         <div class="service-price" style="color: #7A9CC0;">Starting at $150 — Session Rate</div>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🍲</div>
-        <div class="service-title">Food & Culinary Photography</div>
+        <div class="service-title">Food &amp; Culinary Photography</div>
         <p class="service-desc">Premium food photography for restaurants, food brands, chefs, and cookbooks. Styled, lit, and composed to make every dish irresistible. Pairs seamlessly with D.R.O.P Kitchen services.</p>
         <div class="service-price" style="color: #7A9CC0;">Starting at $200 — Half Day</div>
       </div>
       <div class="service-card reveal reveal-delay-3">
         <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🌆</div>
-        <div class="service-title">Street & Documentary Photography</div>
+        <div class="service-title">Street &amp; Documentary Photography</div>
         <p class="service-desc">Editorial and documentary work capturing the culture, energy, and humanity of Minneapolis and beyond. Available for editorial licensing, exhibitions, and publication.</p>
         <div class="service-price" style="color: #7A9CC0;">Custom Licensing — Contact</div>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon" style="border-color: rgba(26,58,92,0.5); background: rgba(26,58,92,0.15);">🎨</div>
-        <div class="service-title">Lifestyle & Brand Campaign Shoots</div>
+        <div class="service-title">Lifestyle &amp; Brand Campaign Shoots</div>
         <p class="service-desc">Full-scale lifestyle campaigns for product brands, apparel, wellness companies, and content creators. Concept-to-delivery production with creative direction included.</p>
         <div class="service-price" style="color: #7A9CC0;">Starting at $500 — Full Day</div>
       </div>
@@ -1007,7 +1130,7 @@
 <section class="section" id="products">
   <div class="container">
     <div class="ecosystem-intro reveal">
-      <div class="tag">Digital Products & Shop</div>
+      <div class="tag">Digital Products &amp; Shop</div>
       <h2 class="section-title">New Releases &amp; <em class="gold">Hot Links</em></h2>
       <div class="divider divider-center"></div>
       <p class="section-body">Instantly downloadable products. No waiting. No shipping. Just tools that work — built by someone who uses them every single day.</p>
@@ -1017,56 +1140,56 @@
     <div class="releases-grid">
       <div class="release-card reveal reveal-delay-1">
         <span class="release-status status-hot">🔥 Hot Release</span>
-        <div class="release-brand">The Student & The Teacher</div>
-        <div class="release-name">ENFJ Voice Master Prompt System</div>
-        <p class="release-desc">Advanced AI copywriting tool built for deep, repeatable authority and precision voice replication. ChatGPT & Claude compatible.</p>
+        <div class="release-brand">The Student &amp; The Teacher</div>
+        <div class="release-name">ENFJ Prompt Pack</div>
+        <p class="release-desc">The core AI prompt library — behavior-informed prompts mapped to ENFJ voice patterns for content creation, coaching copy, and brand communication. ChatGPT &amp; Claude compatible.</p>
         <div class="btn-group" style="margin-top: 1.5rem;">
-          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+          <a href="https://learnerguide.gumroad.com/l/enfj-prompt-pack" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
         </div>
       </div>
       <div class="release-card reveal reveal-delay-2">
-        <span class="release-status status-new">✦ New Release</span>
-        <div class="release-brand">Vision:MB Ecosystem</div>
-        <div class="release-name">The Brand System Matrix</div>
-        <p class="release-desc">The primary master document engineered to unify visual execution and complex AI workflows across multi-brand structures.</p>
+        <span class="release-status status-hot">🔥 Hot Release</span>
+        <div class="release-brand">The Student &amp; The Teacher</div>
+        <div class="release-name">ENFJ Companion</div>
+        <p class="release-desc">Your strategic companion system — frameworks and reference tools designed to deepen and extend ENFJ voice across all platforms, formats, and communication contexts.</p>
         <div class="btn-group" style="margin-top: 1.5rem;">
-          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+          <a href="https://learnerguide.gumroad.com/l/enfj-companion" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
         </div>
       </div>
       <div class="release-card reveal reveal-delay-3">
-        <span class="release-status status-soon"> ◎ Coming Soon</span>
+        <span class="release-status status-hot">🔥 Hot Release</span>
+        <div class="release-brand">The Student &amp; The Teacher</div>
+        <div class="release-name">ENFJ Assistant</div>
+        <p class="release-desc">The operational layer — an AI assistant configuration built to think, respond, and create in authentic ENFJ voice with zero re-prompting needed. Install once, deploy everywhere.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="https://learnerguide.gumroad.com/l/enfj-assistant" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
+        </div>
+      </div>
+      <div class="release-card reveal reveal-delay-1">
+        <span class="release-status status-soon">◎ Coming Soon</span>
         <div class="release-brand">D.R.O.P Kitchen</div>
-        <div class="release-name">Cin & Sug Culinary Line & Recipe Cards</div>
+        <div class="release-name">Cin &amp; Sug Culinary Line &amp; Recipe Cards</div>
         <p class="release-desc">Premium signature spice profiles and narrative layout cards fusing intentionality with world-class kitchen heritage.</p>
         <div class="btn-group" style="margin-top: 1.5rem;">
           <a href="#newsletter" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.72rem;">Pre-Register →</a>
         </div>
       </div>
-      <div class="release-card reveal reveal-delay-1">
+      <div class="release-card reveal reveal-delay-2">
         <span class="release-status status-soon">◎ Coming Soon</span>
-        <div class="release-brand">The Student & The Teacher</div>
-        <div class="release-name">Archetypes & Systems: A Builder’s Guide</div>
+        <div class="release-brand">The Student &amp; The Teacher</div>
+        <div class="release-name">Archetypes &amp; Systems: A Builder's Guide</div>
         <p class="release-desc">24-page foundational manual mapping high-leverage frameworks, including The Architects' Oath and The Stillness Protocol.</p>
         <div class="btn-group" style="margin-top: 1.5rem;">
           <a href="#newsletter" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.72rem;">Join Waitlist →</a>
         </div>
       </div>
-      <div class="release-card reveal reveal-delay-2">
-        <span class="release-status status-hot">🔥 Hot Release</span>
-        <div class="release-brand">Vision:MB Ecosystem</div>
-        <div class="release-name">The Curriculum Vol. 1</div>
-        <p class="release-desc">A complete archive package featuring strategic entries focused on behavioral automation, digital models, and systems operations.</p>
-        <div class="btn-group" style="margin-top: 1.5rem;">
-          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get It on Gumroad →</a>
-        </div>
-      </div>
       <div class="release-card reveal reveal-delay-3">
         <span class="release-status status-new">✦ New Release</span>
-        <div class="release-brand">Digital Engineering</div>
-        <div class="release-name">Healing Companion App</div>
-        <p class="release-desc">An elegant, reflection-driven interface tailored for individuals and clinicians seeking grounded behavioral workflows.</p>
+        <div class="release-brand">Vision:MB Ecosystem</div>
+        <div class="release-name">The Brand System Matrix</div>
+        <p class="release-desc">The primary master document engineered to unify visual execution and complex AI workflows across multi-brand structures.</p>
         <div class="btn-group" style="margin-top: 1.5rem;">
-          <a href="https://gumroad.com" target="_blank" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Get Details →</a>
+          <a href="https://learnerguide.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.72rem;">Browse on Gumroad →</a>
         </div>
       </div>
     </div>
@@ -1135,7 +1258,7 @@
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
-          <p>Vision:MB is a multi-brand creative ecosystem based in Minneapolis, MN. It houses three distinct brands — The Student & The Teacher (education and strategy), D.R.O.P Kitchen (culinary arts and private chef), and MontyB Photography (visual storytelling) — all operating under one unified philosophy: mastery, intentionality, and legacy-driven work. Each brand feeds the others, creating a full-spectrum creative and business service ecosystem.</p>
+          <p>Vision:MB is a multi-brand creative ecosystem based in Minneapolis, MN. It houses three distinct brands — The Student &amp; The Teacher (education and strategy), D.R.O.P Kitchen (culinary arts and private chef), and MontyB Photography (visual storytelling) — all operating under one unified philosophy: mastery, intentionality, and legacy-driven work. Each brand feeds the others, creating a full-spectrum creative and business service ecosystem.</p>
         </div>
       </div>
       <div class="faq-item reveal">
@@ -1144,7 +1267,7 @@
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
-          <p>By design. A D.R.O.P Kitchen dining event gets documented by MontyB Photography. The resulting content becomes brand IP, packaged into educational products through The Student & The Teacher. The cycle continues — content becomes IP, IP becomes products, products build community. Every brand is a spoke in the same wheel, turning together.</p>
+          <p>By design. A D.R.O.P Kitchen dining event gets documented by MontyB Photography. The resulting content becomes brand IP, packaged into educational products through The Student &amp; The Teacher. The cycle continues — content becomes IP, IP becomes products, products build community. Every brand is a spoke in the same wheel, turning together.</p>
         </div>
       </div>
       <div class="faq-item reveal">
@@ -1200,7 +1323,7 @@
             <label class="form-label">Which brand are you most interested in? *</label>
             <select name="brand_interest" class="form-select" required>
               <option value="" disabled selected>Select a brand or service</option>
-              <option>The Student & The Teacher — AI Systems / Strategy / Education</option>
+              <option>The Student &amp; The Teacher — AI Systems / Strategy / Education</option>
               <option>D.R.O.P Kitchen — Private Chef / Events / Food Products</option>
               <option>MontyB Photography — Commercial / Portrait / Food Photography</option>
               <option>Vision:MB — Full Ecosystem / B2B Partnership</option>
@@ -1285,8 +1408,8 @@
       <div class="connect-card reveal reveal-delay-2">
         <div class="connect-icon">🛒</div>
         <div class="connect-title">Gumroad Shop</div>
-        <p class="connect-desc">Browse fully active high-ticket system frameworks, libraries, preset arrays, and strategic tool manuals.</p>
-        <a href="https://gumroad.com" target="_blank" class="btn btn-outline">Visit the Shop →</a>
+        <p class="connect-desc">Browse fully active high-ticket system frameworks, libraries, preset arrays, and strategic tool manuals — including the full ENFJ Voice System.</p>
+        <a href="https://learnerguide.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Visit the Shop →</a>
       </div>
       <div class="connect-card reveal reveal-delay-3">
         <div class="connect-icon">👨‍🍳</div>
@@ -1298,7 +1421,7 @@
         <div class="connect-icon">💼</div>
         <div class="connect-title">LinkedIn — Identity</div>
         <p class="connect-desc">Connect on business strategy design, systems layout analysis, and cross-brand architecture updates.</p>
-        <a href="https://linkedin.com" target="_blank" class="btn btn-ghost">Connect on LinkedIn →</a>
+        <a href="https://www.linkedin.com/in/ramondo-blaylark-33972b402/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Connect on LinkedIn →</a>
       </div>
       <div class="connect-card reveal reveal-delay-2">
         <div class="connect-icon">📋</div>
@@ -1347,19 +1470,20 @@
       <div>
         <div class="footer-heading">The Brands</div>
         <ul class="footer-links">
-          <li><a href="#the-student">The Student & The Teacher</a></li>
+          <li><a href="#the-student">The Student &amp; The Teacher</a></li>
           <li><a href="#drop-kitchen">D.R.O.P Kitchen</a></li>
           <li><a href="#montyb-photo">MontyB Photography</a></li>
           <li><a href="#ecosystem">Ecosystem Overview</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-heading">Products & Shop</div>
+        <div class="footer-heading">Products &amp; Shop</div>
         <ul class="footer-links">
-          <li><a href="https://gumroad.com" target="_blank">Gumroad Shop</a></li>
-          <li><a href="#products">New Releases</a></li>
-          <li><a href="#products">Coming Soon</a></li>
-          <li><a href="#newsletter">Pre-Register</a></li>
+          <li><a href="https://learnerguide.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad Shop</a></li>
+          <li><a href="https://learnerguide.gumroad.com/l/enfj-prompt-pack" target="_blank" rel="noopener noreferrer">ENFJ Prompt Pack</a></li>
+          <li><a href="https://learnerguide.gumroad.com/l/enfj-companion" target="_blank" rel="noopener noreferrer">ENFJ Companion</a></li>
+          <li><a href="https://learnerguide.gumroad.com/l/enfj-assistant" target="_blank" rel="noopener noreferrer">ENFJ Assistant</a></li>
+          <li><a href="#newsletter">Pre-Register New Releases</a></li>
         </ul>
       </div>
       <div>
@@ -1368,7 +1492,7 @@
           <li><a href="#client-eval">Client Evaluation</a></li>
           <li><a href="mailto:vision4futureic@gmail.com">B2B Email</a></li>
           <li><a href="#newsletter">Newsletter</a></li>
-          <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+          <li><a href="https://www.linkedin.com/in/ramondo-blaylark-33972b402/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><a href="#connect">All Channels</a></li>
         </ul>
       </div>
@@ -1385,7 +1509,7 @@
 </footer>
 
 <script>
-  // ── DATA ROUTING INFRASTRUCTURE (OPTION 1: FORMSUBMIT AJAX ROUTING) ──
+  // ── DATA ROUTING INFRASTRUCTURE ──
   const EVAL_FORM_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
   const NEWSLETTER_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
 
@@ -1404,75 +1528,55 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Form Submit Execution
+  // Form Submit
   function handleFormSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('.form-submit');
-    
-    // Capture structural user inputs via FormData API
     const formData = new FormData(form);
     const dataPayload = Object.fromEntries(formData.entries());
-
-    // Inject explicit structural metadata for inbox organization
     dataPayload['_subject'] = "New Vision:MB Client Evaluation Submission";
-
-    // Trigger premium instantaneous visual UX transition
     btn.textContent = "✓ Submitted — We'll be in touch within 48 hours";
     btn.style.background = 'linear-gradient(135deg, #2D6A4F, #1a4a30)';
     btn.style.color = '#fff';
     btn.disabled = true;
-
-    // Dispatch payload data to backend securely
     fetch(EVAL_FORM_ENDPOINT, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(dataPayload)
     })
     .then(response => response.json())
-    .then(data => console.log('Form data captured successfully:', data))
-    .catch(error => console.error('Ecosystem submission fault:', error));
+    .then(data => console.log('Form submitted:', data))
+    .catch(error => console.error('Submission error:', error));
   }
 
-  // Newsletter Submit Execution
+  // Newsletter Submit
   function handleNewsletterSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('.nl-btn');
-    
     const formData = new FormData(form);
     const dataPayload = Object.fromEntries(formData.entries());
-
     dataPayload['_subject'] = "New Vision:MB Dispatch Subscription";
-
     btn.textContent = "✓ You're In";
     btn.style.background = '#2D6A4F';
     btn.disabled = true;
-
     fetch(NEWSLETTER_ENDPOINT, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(dataPayload)
     })
     .then(response => response.json())
-    .then(data => console.log('Newsletter subscription successful:', data))
-    .catch(error => console.error('Newsletter system fault:', error));
+    .then(data => console.log('Newsletter subscribed:', data))
+    .catch(error => console.error('Newsletter error:', error));
   }
 
-  // Nav active state
+  // Nav scroll state
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.borderBottomColor = 'rgba(201,168,76,0.25)';
-    } else {
-      nav.style.borderBottomColor = 'rgba(201,168,76,0.15)';
-    }
+    nav.style.borderBottomColor = window.scrollY > 50
+      ? 'rgba(201,168,76,0.25)'
+      : 'rgba(201,168,76,0.15)';
   });
 </script>
 </body>
