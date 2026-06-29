@@ -466,6 +466,90 @@
     }
     .enfj-product-cta::after { content: ' →'; }
 
+    /* ── TRAUMATIC INTELLIGENCE CALLOUT ── */
+    .ti-callout {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(79,152,163,0.08), rgba(79,152,163,0.03));
+      border: 1px solid rgba(79,152,163,0.3);
+      border-radius: var(--radius);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ti-callout::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #4f98a3, #2a6b76, transparent);
+    }
+    .ti-callout-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #4f98a3;
+      margin-bottom: 0.8rem;
+    }
+    .ti-callout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .ti-callout-title em { font-style: italic; color: #4f98a3; }
+    .ti-callout-sub {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 640px;
+      margin-bottom: 2rem;
+    }
+    .ti-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .ti-tier {
+      background: rgba(10,10,10,0.6);
+      border: 1px solid rgba(79,152,163,0.2);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+    }
+    .ti-tier-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .ti-tier-price {
+      font-size: 0.72rem;
+      color: #4f98a3;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    .btn-ti {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #4f98a3, #2a6b76);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+    .btn-ti:hover {
+      background: linear-gradient(135deg, #6ab4bf, #4f98a3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(79,152,163,0.35);
+    }
+
     /* ── FAQ ACCORDION ── */
     .faq-list { max-width: 780px; margin: 3rem auto 0; }
     .faq-item {
@@ -724,6 +808,7 @@
       .form-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .enfj-products-row { grid-template-columns: 1fr; }
+      .ti-tiers { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -962,6 +1047,37 @@
         <a href="https://learnerguide.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Browse All Products on Gumroad</a>
       </div>
     </div>
+
+    <!-- ── TRAUMATIC INTELLIGENCE CALLOUT ── -->
+    <div class="ti-callout reveal">
+      <div class="ti-callout-label">✦ New Series — The Student &amp; The Teacher</div>
+      <h3 class="ti-callout-title">Traumatic <em>Intelligence</em> Series</h3>
+      <p class="ti-callout-sub">
+        A framework for turning pain into perception — built for those who've lived through what they now teach.
+        Three tiers designed for individuals doing the inner work, practitioners holding space for others,
+        and teachers ready to build movements from their lived experience.
+      </p>
+      <div class="ti-tiers">
+        <div class="ti-tier">
+          <div class="ti-tier-name">Individual</div>
+          <div class="ti-tier-price">$57 — Personal Framework</div>
+        </div>
+        <div class="ti-tier">
+          <div class="ti-tier-name">Practitioner</div>
+          <div class="ti-tier-price">$127 — For Coaches &amp; Therapists</div>
+        </div>
+        <div class="ti-tier">
+          <div class="ti-tier-name">Teacher</div>
+          <div class="ti-tier-price">$397 — Build Your Movement</div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a href="https://growthbalancedlife-cmd.github.io/traumatic-intelligence-series/" target="_blank" rel="noopener noreferrer" class="btn-ti">
+          Explore Traumatic Intelligence →
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1485,101 +1601,11 @@
           <li><a href="https://learnerguide.gumroad.com/l/enfj-prompt-pack" target="_blank" rel="noopener noreferrer">ENFJ Prompt Pack</a></li>
           <li><a href="https://learnerguide.gumroad.com/l/enfj-companion" target="_blank" rel="noopener noreferrer">ENFJ Companion</a></li>
           <li><a href="https://learnerguide.gumroad.com/l/enfj-assistant" target="_blank" rel="noopener noreferrer">ENFJ Assistant</a></li>
+          <li><a href="https://growthbalancedlife-cmd.github.io/traumatic-intelligence-series/" target="_blank" rel="noopener noreferrer">Traumatic Intelligence Series</a></li>
           <li><a href="#newsletter">Pre-Register New Releases</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-heading">Connect</div>
         <ul class="footer-links">
-          <li><a href="#client-eval">Client Evaluation</a></li>
-          <li><a href="mailto:vision4futureic@gmail.com">B2B Email</a></li>
-          <li><a href="#newsletter">Newsletter</a></li>
-          <li><a href="https://www.linkedin.com/in/ramondo-blaylark-33972b402/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="#connect">All Channels</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Vision:MB Ecosystem. All rights reserved. Minneapolis, MN. Vision Makes Believers.</div>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Refund Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // ── DATA ROUTING INFRASTRUCTURE ──
-  const EVAL_FORM_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
-  const NEWSLETTER_ENDPOINT = 'https://formsubmit.co/ajax/vision4futureic@gmail.com';
-
-  // Scroll Reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
-
-  // FAQ Toggle
-  function toggleFAQ(el) {
-    const item = el.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-
-  // Form Submit
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('.form-submit');
-    const formData = new FormData(form);
-    const dataPayload = Object.fromEntries(formData.entries());
-    dataPayload['_subject'] = "New Vision:MB Client Evaluation Submission";
-    btn.textContent = "✓ Submitted — We'll be in touch within 48 hours";
-    btn.style.background = 'linear-gradient(135deg, #2D6A4F, #1a4a30)';
-    btn.style.color = '#fff';
-    btn.disabled = true;
-    fetch(EVAL_FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(dataPayload)
-    })
-    .then(response => response.json())
-    .then(data => console.log('Form submitted:', data))
-    .catch(error => console.error('Submission error:', error));
-  }
-
-  // Newsletter Submit
-  function handleNewsletterSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('.nl-btn');
-    const formData = new FormData(form);
-    const dataPayload = Object.fromEntries(formData.entries());
-    dataPayload['_subject'] = "New Vision:MB Dispatch Subscription";
-    btn.textContent = "✓ You're In";
-    btn.style.background = '#2D6A4F';
-    btn.disabled = true;
-    fetch(NEWSLETTER_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(dataPayload)
-    })
-    .then(response => response.json())
-    .then(data => console.log('Newsletter subscribed:', data))
-    .catch(error => console.error('Newsletter error:', error));
-  }
-
-  // Nav scroll state
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.borderBottomColor = window.scrollY > 50
-      ? 'rgba(201,168,76,0.25)'
-      : 'rgba(201,168,76,0.15)';
-  });
-</script>
-</body>
-</html>
+          <li><a href="
