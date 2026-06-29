@@ -1,472 +1,956 @@
+
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vision:MB Ecosystem | Where Vision Becomes Legacy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vision:MB is a multi-brand creative ecosystem based in Minneapolis, MN — fusing brand strategy, culinary artistry, and visual storytelling into one unified force." />
+  <meta property="og:title" content="Vision:MB — Where Vision Becomes Legacy" />
+  <meta property="og:description" content="Three brands. One architecture. The Student & The Teacher, D.R.O.P Kitchen, and MontyB Photography — built on behavioral science and creative mastery." />
+  <meta property="og:url" content="https://visionmb612.com" />
+  <meta property="og:site_name" content="Vision:MB" />
+  <meta property="og:type" content="website" />
+  <title>Vision:MB — Where Vision Becomes Legacy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
   <style>
-    /* ── BRAND PALETTE ──
-       #8DA18D  Sage Green    → Grounding
-       #4A5D66  Slate Teal    → Trusted Authority
-       #F9F7F2  Warm Cream    → Soothing Foundation
-       #D1A68F  Terracotta    → Human Connection
-    */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── DARK MODE (default) ── */
-    :root,
-    [data-theme="dark"] {
-      --primary:       #8DA18D;
-      --primary-light: #A8BBA8;
-      --primary-dark:  #6A7F6A;
-      --authority:     #4A5D66;
-      --authority-light:#637D8A;
-      --cream:         #F9F7F2;
-      --human:         #D1A68F;
-      --human-light:   #E0BCA9;
-      --human-dark:    #B88870;
-
-      --black:    #0C0F0C;
-      --deep:     #111511;
-      --charcoal: #1A1E1A;
-      --slate:    #222722;
-      --white:    #F9F7F2;
-      --text-light:#9EAD9E;
-
-      --bg-body:    #0C0F0C;
-      --bg-section: #111511;
-      --bg-alt:     #1A1E1A;
-      --bg-card:    #1A1E1A;
-      --bg-nav:     rgba(12,15,12,0.93);
-      --border:     rgba(141,161,141,0.15);
-      --border-strong: rgba(141,161,141,0.3);
-
-      --text-heading: #F9F7F2;
-      --text-body:    #C8D2C8;
-      --text-muted:   #9EAD9E;
-
-      --radius: 4px;
-      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --mid: #1a1a1a;
+      --surface: #222222;
+      --border: #2e2e2e;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --white: #f5f5f0;
+      --muted: #888888;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
     }
 
-    /* ── LIGHT MODE ── */
-    [data-theme="light"] {
-      --primary:       #8DA18D;
-      --primary-light: #A8BBA8;
-      --primary-dark:  #5C7A5C;
-      --authority:     #4A5D66;
-      --authority-light:#637D8A;
-      --cream:         #F9F7F2;
-      --human:         #D1A68F;
-      --human-light:   #E0BCA9;
-      --human-dark:    #B07355;
-
-      --black:    #1C2220;
-      --deep:     #2C3530;
-      --charcoal: #3A4440;
-      --slate:    #4A5550;
-      --white:    #F9F7F2;
-      --text-light:#6B7D72;
-
-      --bg-body:    #F9F7F2;
-      --bg-section: #EEECe6;
-      --bg-alt:     #E5E2D8;
-      --bg-card:    #FFFFFF;
-      --bg-nav:     rgba(249,247,242,0.96);
-      --border:     rgba(74,93,102,0.15);
-      --border-strong: rgba(74,93,102,0.3);
-
-      --text-heading: #1C2220;
-      --text-body:    #3A4440;
-      --text-muted:   #6B7D72;
-
-      --radius: 4px;
-      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-body);
-      color: var(--text-body);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
       overflow-x: hidden;
-      transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* ── UTILITY ── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .section { padding: 100px 0; background: var(--bg-body); }
-    .section-alt { background: var(--bg-section); }
-    .section-slate { background: var(--bg-alt); }
-    .primary { color: var(--primary); }
-    .serif { font-family: 'Cormorant Garamond', serif; }
-    .tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--primary);
-      border: 1px solid var(--primary-dark);
-      padding: 4px 14px;
-      border-radius: 2px;
-      margin-bottom: 1rem;
-    }
-    .divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--primary), transparent); margin: 1.5rem 0; }
-    .divider-center { margin: 1.5rem auto; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 0; }
+    .section--dark { background: var(--dark); }
+    .section--mid { background: var(--mid); }
+    .label { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; }
+    .section-subtitle { color: var(--muted); font-size: 1rem; max-width: 640px; line-height: 1.8; }
+    .gold { color: var(--gold); }
+    .divider { width: 40px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+    .tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25rem 0.75rem; border: 1px solid var(--border); color: var(--muted); margin-right: 0.5rem; margin-bottom: 0.5rem; }
 
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: var(--radius);
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-    }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--human), var(--human-dark));
-      color: #F9F7F2;
-    }
-    .btn-gold:hover {
-      background: linear-gradient(135deg, var(--human-light), var(--human));
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(209,166,143,0.35);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 1px solid var(--primary);
-    }
-    .btn-outline:hover { background: var(--primary); color: var(--bg-body); transform: translateY(-2px); }
-    .btn-ghost {
-      background: rgba(141,161,141,0.08);
-      color: var(--text-heading);
-      border: 1px solid var(--border-strong);
-    }
-    .btn-ghost:hover { background: rgba(141,161,141,0.18); transform: translateY(-2px); }
-    .btn-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .btn { display: inline-block; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 2rem; cursor: pointer; border: none; transition: all 0.25s ease; }
+    .btn-primary { background: var(--gold); color: var(--black); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); font-size: 0.7rem; }
+    .btn-ghost:hover { background: var(--gold); color: var(--black); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      background: var(--bg-nav);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      transition: background 0.4s ease;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 70px;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 700;
-      color: var(--primary); text-decoration: none; letter-spacing: 0.05em;
-    }
-    .nav-logo span { color: var(--text-heading); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-muted); text-decoration: none; transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-    .nav-cta { font-size: 0.72rem; padding: 10px 22px; }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 0.72rem; }
 
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border-strong);
-      border-radius: 20px;
-      padding: 6px 14px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      font-family: 'Space Grotesk', sans-serif;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      transition: var(--transition);
-      display: flex; align-items: center; gap: 6px;
-      white-space: nowrap;
-    }
-    .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
-    .theme-toggle .icon { font-size: 0.9rem; }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; background: var(--black); }
+    #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.85; margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+    .stat-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding-top: 70px;
-      background: var(--bg-body);
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(141,161,141,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(74,93,102,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 90% 10%, rgba(209,166,143,0.05) 0%, transparent 60%);
-    }
-    [data-theme="light"] .hero-bg {
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(141,161,141,0.1) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(74,93,102,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 90% 10%, rgba(209,166,143,0.1) 0%, transparent 60%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(141,161,141,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(141,161,141,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    [data-theme="light"] .hero-grid {
-      background-image:
-        linear-gradient(rgba(74,93,102,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(74,93,102,0.06) 1px, transparent 1px);
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 800px; }
-    .hero-eyebrow {
-      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--primary); }
-    .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; line-height: 1.05;
-      margin-bottom: 1.5rem; letter-spacing: -0.01em;
-      color: var(--text-heading);
-    }
-    .hero-headline em { font-style: italic; color: var(--human); }
-    .hero-sub {
-      font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;
-      max-width: 580px; margin-bottom: 2.5rem; font-weight: 300;
-    }
-    .hero-stats {
-      display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .stat-item { text-align: left; }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.2rem;
-      font-weight: 600; color: var(--primary); line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-muted); margin-top: 0.3rem;
+    .ticker-wrap { overflow: hidden; background: var(--gold); padding: 0.75rem 0; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; animation: ticker 30s linear infinite; }
+    .ticker-inner span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); font-weight: 600; padding: 0 2rem; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .ecosystem-intro { text-align: center; max-width: 720px; margin: 0 auto 5rem; }
+    .brand-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .brand-card { background: var(--dark); padding: 3rem 2.5rem; transition: background 0.3s; }
+    .brand-card:hover { background: var(--mid); }
+    .brand-num { font-family: var(--font-serif); font-size: 4rem; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+    .brand-category { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .brand-name { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 500; margin-bottom: 1rem; }
+    .brand-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    .brand-section { padding: 7rem 0; }
+    .brand-header { margin-bottom: 4rem; }
+    .brand-eyebrow { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .brand-headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; }
+    .brand-philosophy { font-style: italic; font-family: var(--font-serif); font-size: 1.3rem; color: var(--gold); margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--gold); }
+    .brand-tags { margin: 1.5rem 0 2.5rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background: var(--border); margin-top: 3rem; }
+    .service-card { background: var(--dark); padding: 2rem; transition: background 0.25s; }
+    .brand-section--mid .service-card { background: var(--mid); }
+    .brand-section--mid .service-card:hover { background: var(--surface); }
+    .service-card:hover { background: var(--mid); }
+    .service-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .service-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+    .service-price { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .service-cta { display: inline-block; margin-top: 0.75rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .service-cta:hover { border-color: var(--gold); }
+
+    .featured-banner { background: var(--surface); border: 1px solid var(--border); padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .featured-banner .dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .product-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; transition: border-color 0.25s; }
+    .product-card:hover { border-color: var(--gold); }
+    .product-num { font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold); opacity: 0.5; margin-bottom: 1rem; }
+    .product-name { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .product-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .product-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25rem 0.6rem; margin-bottom: 1rem; }
+    .badge-hot { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+    .badge-soon { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+    .badge-new { background: rgba(201,168,76,0.1); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.2); }
+
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 3rem; }
+    .testimonial { background: var(--dark); padding: 2.5rem; }
+    .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+    .testimonial-text { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.7; color: var(--white); margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-name { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; }
+    .testimonial-role { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .testimonial-product { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.4rem; opacity: 0.8; }
+
+    .connect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); margin-top: 3rem; }
+    .connect-card { background: var(--dark); padding: 2.5rem; text-decoration: none; color: inherit; display: block; transition: background 0.25s; }
+    .connect-card:hover { background: var(--mid); }
+    .connect-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .connect-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; color: var(--white); }
+    .connect-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .connect-action { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+
+    .faq-list { margin-top: 3rem; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 2rem 0; }
+    .faq-q { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; margin-bottom: 1rem; }
+    .faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    input, select, textarea { background: var(--surface); border: 1px solid var(--border); color: var(--white); font-family: var(--font-sans); font-size: 0.9rem; padding: 0.85rem 1rem; width: 100%; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    select option { background: var(--surface); }
+    textarea { resize: vertical; min-height: 130px; }
+    .form-submit { margin-top: 1rem; }
+    .dispatch-form { display: flex; gap: 0; max-width: 480px; margin-top: 2rem; }
+    .dispatch-form input { flex: 1; border-right: none; }
+    .dispatch-form button { white-space: nowrap; }
+
+    .b2b-box { border: 1px solid var(--border); padding: 4rem; text-align: center; max-width: 700px; margin: 0 auto; }
+
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+    .footer-tagline { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+    .footer-col-title { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-legal { font-size: 0.78rem; color: var(--muted); }
+
+    @media (max-width: 900px) { .brand-cards { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 2rem; flex-wrap: wrap; } }
+    @media (max-width: 640px) { .nav-links { display: none; } .form-grid { grid-template-columns: 1fr; } .b2b-box { padding: 2.5rem 1.5rem; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; } .hero-actions { flex-direction: column; } .dispatch-form { flex-direction: column; } .dispatch-form input { border-right: 1px solid var(--border); border-bottom: none; } }
+
+    body.light { --black: #f5f5f0; --dark: #ebebea; --mid: #e0e0dc; --surface: #d5d5d0; --border: #c8c8c2; --gold: #9a7a2e; --gold-light: #b8962e; --white: #111111; --muted: #555555; }
+    body.light nav { background: rgba(245,245,240,0.94); }
+    body.light .ticker-wrap { background: var(--gold); }
+    body.light .ticker-inner span { color: #f5f5f0; }
+    body.light input, body.light select, body.light textarea { background: #ffffff; color: #111111; border-color: var(--border); }
+    body.light select option { background: #ffffff; color: #111111; }
+    body.light .mobile-drawer { background: var(--dark); }
+
+    .theme-toggle { display: flex; align-items: center; gap: 0.5rem; background: none; border: 1px solid var(--border); color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 0.85rem; cursor: pointer; transition: border-color 0.2s, color 0.2s; font-family: var(--font-sans); }
+    .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .theme-toggle .toggle-icon { font-size: 0.95rem; transition: transform 0.4s ease; }
+    body.light .theme-toggle .toggle-icon { transform: rotate(180deg); }
+    .theme-toggle .toggle-label-dark { display: inline; }
+    .theme-toggle .toggle-label-light { display: none; }
+    body.light .theme-toggle .toggle-label-dark { display: none; }
+    body.light .theme-toggle .toggle-label-light { display: inline; }
+    .drawer-theme-row { padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border); }
+    .drawer-theme-row .theme-toggle { width: 100%; justify-content: center; }
+
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: 1px solid var(--border); cursor: pointer; padding: 8px; transition: border-color 0.2s; }
+    .hamburger:hover { border-color: var(--gold); }
+    .hamburger span { display: block; width: 100%; height: 1px; background: var(--white); transition: all 0.3s ease; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease; }
+    .mobile-overlay.active { display: block; opacity: 1; }
+    .mobile-drawer { position: fixed; top: 0; right: 0; width: min(85vw, 340px); height: 100dvh; background: var(--dark); border-left: 1px solid var(--border); z-index: 300; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+    .mobile-drawer.open { transform: translateX(0); }
+    .drawer-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 1.75rem; border-bottom: 1px solid var(--border); }
+    .drawer-close { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 1rem; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .drawer-close:hover { border-color: var(--gold); color: var(--gold); }
+    .drawer-nav { display: flex; flex-direction: column; padding: 1.5rem 1.75rem; flex: 1; gap: 0; }
+    .drawer-link { font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 1.1rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; display: flex; justify-content: space-between; align-items: center; }
+    .drawer-link::after { content: "→"; opacity: 0; transition: opacity 0.2s; }
+    .drawer-link:hover { color: var(--gold); }
+    .drawer-link:hover::after { opacity: 1; }
+    .drawer-cta { padding: 1.75rem; border-top: 1px solid var(--border); }
+    @media (max-width: 768px) { .hamburger { display: flex; } .nav-links { display: none !important; } .nav-cta { display: none; } }
+
+    [data-reveal] { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity, transform; }
+    [data-reveal="fade-up"] { transform: translateY(40px); }
+    [data-reveal="fade-down"] { transform: translateY(-30px); }
+    [data-reveal="fade-left"] { transform: translateX(-40px); }
+    [data-reveal="fade-right"] { transform: translateX(40px); }
+    [data-reveal="scale"] { transform: scale(0.93); }
+    [data-reveal="fade"] { transform: none; }
+    [data-reveal].revealed { opacity: 1; transform: none; }
+    [data-stagger] > * { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
+    [data-stagger].revealed > * { opacity: 1; transform: none; }
+    [data-stagger].revealed > *:nth-child(1) { transition-delay: 0.05s; }
+    [data-stagger].revealed > *:nth-child(2) { transition-delay: 0.15s; }
+    [data-stagger].revealed > *:nth-child(3) { transition-delay: 0.25s; }
+    [data-stagger].revealed > *:nth-child(4) { transition-delay: 0.35s; }
+    [data-stagger].revealed > *:nth-child(5) { transition-delay: 0.45s; }
+    [data-stagger].revealed > *:nth-child(6) { transition-delay: 0.55s; }
+    @media (prefers-reduced-motion: reduce) { [data-reveal], [data-stagger] > * { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+    #portfolio { padding: 7rem 0; background: var(--black); }
+    .gallery-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 2.5rem 0 3rem; }
+    .filter-btn { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.5rem 1.1rem; background: none; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.06); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 220px; gap: 4px; }
+    .gallery-item { position: relative; overflow: hidden; background: var(--surface); cursor: pointer; grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(7) { grid-column: span 5; grid-row: span 1; }
+    .gallery-item:nth-child(8) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(9) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(10) { grid-column: span 4; grid-row: span 1; }
+    .gallery-item:nth-child(11) { grid-column: span 5; grid-row: span 1; }
+    .gallery-item:nth-child(12) { grid-column: span 3; grid-row: span 1; }
+    .gallery-placeholder { width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 1rem; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .gallery-item[data-cat="portrait"] .gallery-placeholder { background: linear-gradient(160deg, #1a1510 0%, #2d2218 50%, #3d2e1a 100%); }
+    .gallery-item[data-cat="street"] .gallery-placeholder { background: linear-gradient(160deg, #0d0d12 0%, #16161f 50%, #1e1e2a 100%); }
+    .gallery-item[data-cat="food"] .gallery-placeholder { background: linear-gradient(160deg, #0f1208 0%, #1a1f0e 50%, #252b10 100%); }
+    .gallery-item[data-cat="lifestyle"] .gallery-placeholder { background: linear-gradient(160deg, #100d14 0%, #1a1520 50%, #22182c 100%); }
+    .gallery-item[data-cat="editorial"] .gallery-placeholder { background: linear-gradient(160deg, #0e0e0e 0%, #181818 50%, #222222 100%); }
+    .gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1.25rem; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-meta { color: var(--white); }
+    .gallery-cat-tag { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.3rem; }
+    .gallery-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; line-height: 1.3; }
+    .gallery-label { position: absolute; top: 0.75rem; left: 0.75rem; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); pointer-events: none; }
+    .gallery-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; opacity: 0.12; pointer-events: none; transition: opacity 0.3s; }
+    .gallery-item:hover .gallery-icon { opacity: 0; }
+    .gallery-item.hidden { display: none; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 500; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { max-width: 700px; width: 100%; background: var(--surface); border: 1px solid var(--border); padding: 3rem 2.5rem; text-align: center; position: relative; }
+    .lightbox-cat { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .lightbox-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; margin-bottom: 1rem; color: var(--white); }
+    .lightbox-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .lightbox-placeholder { width: 100%; height: 260px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; opacity: 0.3; }
+    .lightbox-close { position: absolute; top: 1rem; right: 1rem; background: none; border: 1px solid var(--border); color: var(--muted); width: 36px; height: 36px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .lightbox-close:hover { border-color: var(--gold); color: var(--gold); }
+    .lightbox-note { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-align: center; }
+    .gallery-cta-row { display: flex; gap: 1rem; justify-content: center; margin-top: 3.5rem; flex-wrap: wrap; }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 180px; } .gallery-item, .gallery-item:nth-child(n) { grid-column: span 3; grid-row: span 1; } .gallery-item:nth-child(1), .gallery-item:nth-child(8) { grid-column: span 6; grid-row: span 1; } }
+    @media (max-width: 540px) { .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; } .gallery-item, .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; } .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: span 2; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">Vision<span>:MB</span></a>
+    <ul class="nav-links">
+      <li><a href="#ecosystem">Ecosystem</a></li>
+      <li><a href="#student-teacher">Education</a></li>
+      <li><a href="#drop-kitchen">Culinary</a></li>
+      <li><a href="#montyb">Photography</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#evaluation">Start Here</a></li>
+    </ul>
+    <a href="#evaluation" class="btn btn-primary nav-cta">Start Here</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour mode">
+      <span class="toggle-icon">☀️</span>
+      <span class="toggle-label-dark">Light</span>
+      <span class="toggle-label-light">Dark</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer-header">
+    <span class="nav-logo">Vision<span class="gold">:MB</span></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="drawer-theme-row">
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle colour mode">
+      <span class="toggle-icon">☀️</span>
+      <span class="toggle-label-dark">Switch to Light Mode</span>
+      <span class="toggle-label-light">Switch to Dark Mode</span>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="#ecosystem" class="drawer-link">Ecosystem</a>
+    <a href="#student-teacher" class="drawer-link">Education</a>
+    <a href="#drop-kitchen" class="drawer-link">Culinary</a>
+    <a href="#montyb" class="drawer-link">Photography</a>
+    <a href="#portfolio" class="drawer-link">Portfolio</a>
+    <a href="#faq" class="drawer-link">FAQ</a>
+    <a href="#contact" class="drawer-link">Connect</a>
+  </nav>
+  <div class="drawer-cta">
+    <a href="#evaluation" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Start Here — Client Evaluation</a>
+  </div>
+</div>
+
+<section id="hero" class="section">
+  <div class="container">
+    <p class="hero-eyebrow" data-reveal="fade-up">Vision:MB Ecosystem — Minneapolis, MN</p>
+    <h1 class="hero-title" data-reveal="fade-up">Where Vision<br /><em>Becomes Legacy.</em></h1>
+    <p class="hero-sub" data-reveal="fade-up">A multi-brand creative ecosystem fusing behavioral science, brand strategy, culinary artistry, and visual storytelling into one unified force. We don't just build brands — we architect experiences that move people.</p>
+    <div class="hero-actions" data-reveal="fade-up">
+      <a href="#evaluation" class="btn btn-primary">Get Your Service Match</a>
+      <a href="#ecosystem" class="btn btn-outline">Explore the Ecosystem</a>
+    </div>
+    <div class="hero-stats" data-stagger>
+      <div><div class="stat-num">3</div><div class="stat-label">Distinct Brands</div></div>
+      <div><div class="stat-num">10+</div><div class="stat-label">Years of Mastery</div></div>
+      <div><div class="stat-num">1</div><div class="stat-label">Unified Vision</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Vision:MB Agency</span><span>·</span><span>D.R.O.P Kitchen</span><span>·</span><span>MontyB Photography</span><span>·</span><span>The Student &amp; The Teacher</span><span>·</span><span>AI Prompt Systems</span><span>·</span><span>Brand Strategy</span><span>·</span><span>Culinary Excellence</span><span>·</span><span>Visual Storytelling</span><span>·</span><span>Notion Architecture</span><span>·</span><span>Behavioral Design</span><span>·</span><span>Vision Makes Believers</span><span>·</span>
+    <span>Vision:MB Agency</span><span>·</span><span>D.R.O.P Kitchen</span><span>·</span><span>MontyB Photography</span><span>·</span><span>The Student &amp; The Teacher</span><span>·</span><span>AI Prompt Systems</span><span>·</span><span>Brand Strategy</span><span>·</span><span>Culinary Excellence</span><span>·</span><span>Visual Storytelling</span><span>·</span><span>Notion Architecture</span><span>·</span><span>Behavioral Design</span><span>·</span><span>Vision Makes Believers</span><span>·</span>
+  </div>
+</div>
+
+<section id="ecosystem" class="section section--dark">
+  <div class="container">
+    <div class="ecosystem-intro" data-reveal="fade-up">
+      <span class="label" data-reveal="fade-up">The Ecosystem</span>
+      <h2 class="section-title" data-reveal="fade-up">Three Brands.<br />One Architecture.</h2>
+      <p class="section-subtitle" data-reveal="fade-up">Built on the principles of behavioral psychology, neuroscience, and creative mastery — the Vision:MB ecosystem is engineered so every brand feeds the next. Content becomes IP. IP becomes product. Product builds community. Community fuels legacy.</p>
+    </div>
+    <div class="brand-cards" data-stagger>
+      <div class="brand-card">
+        <div class="brand-num">01</div>
+        <div class="brand-category">Education &amp; Strategy</div>
+        <div class="brand-name">The Student &amp; The Teacher</div>
+        <p class="brand-desc">The intellectual engine. AI systems, Notion architecture, brand strategy toolkits, and behavioral science frameworks that teach professionals to think and build at the highest level.</p>
+        <br /><a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/" target="_blank" rel="noopener" class="service-cta">Explore →</a>
+      </div>
+      <div class="brand-card">
+        <div class="brand-num">02</div>
+        <div class="brand-category">Culinary Arts</div>
+        <div class="brand-name">D.R.O.P Kitchen</div>
+        <p class="brand-desc">Diverse Recipes Outstanding Palate. A premium culinary brand offering private chef services, signature sauces, seasonings, and immersive food experiences rooted in global tradition.</p>
+        <br /><a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener" class="service-cta">Explore →</a>
+      </div>
+      <div class="brand-card">
+        <div class="brand-num">03</div>
+        <div class="brand-category">Visual Storytelling</div>
+        <div class="brand-name">MontyB Photography</div>
+        <p class="brand-desc">Street. Portrait. Food. Lifestyle. Journalism. A documentary eye that captures the soul of a moment — providing brands, individuals, and publications with imagery that commands attention.</p>
+        <br /><a href="#montyb" class="service-cta">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="student-teacher" class="brand-section">
+  <div class="container">
+    <div class="brand-header">
+      <p class="brand-eyebrow">Vision:MB — Brand 01</p>
+      <h2 class="brand-headline" data-reveal="fade-up">The Student<br />&amp; The Teacher</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle" data-reveal="fade-up">The philosophical core of the Vision:MB ecosystem. Built on a timeless truth: the best teachers never stop being students. Knowledge is packaged into systems — AI prompt libraries, brand strategy kits, Notion workspaces, and behavioral science frameworks — all engineered to help creators, entrepreneurs, and brands operate at an elite level.</p>
+      <blockquote class="brand-philosophy" data-reveal="fade-left">"Every master was once a student who refused to stop learning."</blockquote>
+      <div class="brand-tags" data-reveal="fade-up">
+        <span class="tag">Education</span><span class="tag">Strategy</span><span class="tag">Systems</span><span class="tag">Digital Products</span><span class="tag">Consulting</span>
+      </div>
+      <a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-bottom:1rem;">Visit Brand Page →</a>
+    </div>
+    <span class="label" data-reveal="fade-up">Services Offered</span>
+    <div class="services-grid" data-stagger>
+      <div class="service-card">
+        <div class="service-name">AI Prompt Engineering Systems</div>
+        <p class="service-desc">Curated, behavior-informed prompt libraries and frameworks for entrepreneurs, creatives, and businesses. Built for repeatability and depth — not surface-level outputs.</p>
+        <div class="service-price">Starting at $27 — Digital Download</div>
+        <a href="https://learnerguide.gumroad.com/l/enfjleadershipbundle" target="_blank" rel="noopener" class="service-cta">Shop on Gumroad →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Notion Architecture &amp; Templates</div>
+        <p class="service-desc">Full business operating systems, content pipelines, client management dashboards, and brand strategy hubs built inside Notion. Ready to install, customize, and scale.</p>
+        <div class="service-price">Starting at $47 — Instant Access</div>
+        <a href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener" class="service-cta">Shop on Gumroad →</a>
+        <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint-landing/" target="_blank" rel="noopener" class="service-cta">View Landing Page →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Brand Strategy Client Kits</div>
+        <p class="service-desc">Deep-dive brand positioning, voice and identity systems, competitive analysis frameworks, and go-to-market strategy tools grounded in behavioral psychology.</p>
+        <div class="service-price">Starting at $97 — Full Kit</div>
+        <a href="https://learnerguide.gumroad.com/l/traumatic-intelligence" target="_blank" rel="noopener" class="service-cta">Shop on Gumroad →</a>
+        <a href="https://growthbalancedlife-cmd.github.io/traumatic-intelligence-series/" target="_blank" rel="noopener" class="service-cta">View Landing Page →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Behavioral Design Consulting</div>
+        <p class="service-desc">1-on-1 and group consulting sessions applying neuroscience and behavioral economics to brand decisions, content strategy, UX copy, and audience psychology.</p>
+        <div class="service-price">Starting at $250 — Per Session</div>
+        <a href="#evaluation" class="service-cta">Book a Session →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Creator Handbooks &amp; Guides</div>
+        <p class="service-desc">Premium PDF guides on building digital products, designing brand systems, and monetizing expertise — written from lived experience and backed by science.</p>
+        <div class="service-price">Starting at $17 — PDF Download</div>
+        <a href="https://learnerguide.gumroad.com/l/enfjleadershipbundle" target="_blank" rel="noopener" class="service-cta">Shop on Gumroad →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">B2B Brand Consulting Retainer</div>
+        <p class="service-desc">Monthly retainer for businesses needing ongoing strategic support — content systems, brand identity maintenance, AI integration, and growth architecture.</p>
+        <div class="service-price">From $500/mo — Custom Quote</div>
+        <a href="mailto:thestudent.theteacher@gmail.com" class="service-cta">Contact for Quote →</a>
+      </div>
+    </div>
+
+    <!-- ENFJ Featured -->
+    <div style="margin-top:5rem;">
+      <div class="featured-banner" data-reveal="fade-up"><div class="dot"></div><span>Featured Collection — Now Live on Gumroad</span></div>
+      <div class="brand-header">
+        <h3 class="brand-headline" style="font-size:clamp(1.8rem,3.5vw,2.8rem);" data-reveal="fade-up">The ENFJ Voice System</h3>
+        <p class="section-subtitle" data-reveal="fade-up">Three precision-engineered tools built exclusively for the ENFJ communicator — the visionary who leads with empathy, inspires through language, and builds movements with words.</p>
+      </div>
+      <div class="products-grid" data-stagger>
+        <div class="product-card">
+          <div class="product-num">01</div>
+          <span class="product-badge badge-hot">🔥 Hot Release</span>
+          <div class="product-name">ENFJ Prompt Pack</div>
+          <p class="product-desc">The core AI prompt library — behavior-informed prompts mapped to ENFJ voice patterns for content, coaching copy, and brand communication. ChatGPT &amp; Claude compatible.</p>
+          <a href="https://learnerguide.gumroad.com/l/enfjleadershipbundle" target="_blank" rel="noopener" class="btn btn-ghost">Get on Gumroad</a>
+          <a href="https://growthbalancedlife-cmd.github.io/enfj-voice/" target="_blank" rel="noopener" class="service-cta" style="margin-top:0.5rem;display:inline-block;">View Landing Page →</a>
+        </div>
+        <div class="product-card">
+          <div class="product-num">02</div>
+          <span class="product-badge badge-hot">🔥 Hot Release</span>
+          <div class="product-name">ENFJ Companion</div>
+          <p class="product-desc">Your strategic companion system — frameworks and reference tools designed to deepen and extend ENFJ voice across all platforms, formats, and communication contexts.</p>
+          <a href="https://learnerguide.gumroad.com/l/enfjleadershipbundle" target="_blank" rel="noopener" class="btn btn-ghost">Get on Gumroad</a>
+          <a href="https://growthbalancedlife-cmd.github.io/enfj-voice/" target="_blank" rel="noopener" class="service-cta" style="margin-top:0.5rem;display:inline-block;">View Landing Page →</a>
+        </div>
+        <div class="product-card">
+          <div class="product-num">03</div>
+          <span class="product-badge badge-hot">🔥 Hot Release</span>
+          <div class="product-name">ENFJ Assistant</div>
+          <p class="product-desc">The operational layer — an AI assistant configuration built to think, respond, and create in authentic ENFJ voice with zero re-prompting needed. Install once, deploy everywhere.</p>
+          <a href="https://learnerguide.gumroad.com/l/enfjleadershipbundle" target="_blank" rel="noopener" class="btn btn-ghost">Get on Gumroad</a>
+          <a href="https://growthbalancedlife-cmd.github.io/enfj-voice/" target="_blank" rel="noopener" class="service-cta" style="margin-top:0.5rem;display:inline-block;">View Landing Page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="drop-kitchen" class="brand-section section--dark">
+  <div class="container">
+    <div class="brand-header">
+      <p class="brand-eyebrow">Vision:MB — Brand 02</p>
+      <h2 class="brand-headline" data-reveal="fade-up">D.R.O.P<br />Kitchen</h2>
+      <div class="divider"></div>
+      <p style="font-size:0.85rem; letter-spacing:0.08em; color:var(--gold); margin-bottom:1.5rem;"><strong>D</strong>iverse &nbsp;<strong>R</strong>ecipes &nbsp;<strong>O</strong>utstanding &nbsp;<strong>P</strong>alate</p>
+      <p class="section-subtitle" data-reveal="fade-up">D.R.O.P Kitchen is the culinary arm of the Vision:MB ecosystem — bringing the same philosophy of mastery and intentionality to the table. From intimate dinner events to signature sauces inspired by global cuisines, every dish tells a story and every flavor is crafted with intention.</p>
+      <blockquote class="brand-philosophy" data-reveal="fade-left">"Every culture carries its story in its food. We serve both."</blockquote>
+      <div class="brand-tags" data-reveal="fade-up">
+        <span class="tag">Private Chef</span><span class="tag">Food Products</span><span class="tag">Minneapolis</span><span class="tag">Nationwide</span>
+      </div>
+      <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-bottom:1rem;">Visit Brand Page →</a>
+    </div>
+    <span class="label" data-reveal="fade-up">Services &amp; Offerings</span>
+    <div class="services-grid" data-stagger>
+      <div class="service-card">
+        <div class="service-name">Private Chef Experience</div>
+        <p class="service-desc">Exclusive in-home and event dining experiences. Menu designed around your preferences, dietary needs, and occasion — from intimate couples dinners to executive gatherings.</p>
+        <div class="service-price">Starting at $300 — Contact for Quote</div>
+        <a href="#evaluation" class="service-cta">Book an Experience →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Signature Sauces &amp; Seasonings</div>
+        <p class="service-desc">Small-batch artisan sauces and spice blends inspired by world cuisines. Online and local availability.</p>
+        <div class="service-price">Shop Online — Coming Soon Q3 2026</div>
+        <a href="#dispatch" class="service-cta">Join the Waitlist →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Pop-Up Dining Events</div>
+        <p class="service-desc">Curated, themed dining pop-ups in the Minneapolis area. Each event is a full sensory experience — food, ambiance, and storytelling woven together into an unforgettable evening.</p>
+        <div class="service-price">Seasonal — Join the Waitlist</div>
+        <a href="#dispatch" class="service-cta">Get Priority Alerts →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Food Styling &amp; Photography</div>
+        <p class="service-desc">In direct partnership with MontyB Photography — offering premium food styling and professional photography for brands, restaurants, and cookbooks.</p>
+        <div class="service-price">Bundle Available with MontyB</div>
+        <a href="#evaluation" class="service-cta">Inquire About Bundle →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Corporate Catering &amp; Partnerships</div>
+        <p class="service-desc">Brand partnerships, corporate catering, restaurant consulting, and culinary content creation for food brands seeking authentic storytelling and elevated presentation.</p>
+        <div class="service-price">B2B Pricing Available</div>
+        <a href="mailto:thedropkitchen@outlook.com" class="service-cta">Contact for Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Digital Cookbooks &amp; Recipe Collections</div>
+        <p class="service-desc">Curated digital cookbooks featuring global recipes, chef notes, sourcing guides, and the cultural context behind every dish. Sold as premium digital downloads.</p>
+        <div class="service-price">Coming Q3 2026 — Pre-Register</div>
+        <a href="#dispatch" class="service-cta">Pre-Register Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="montyb" class="brand-section">
+  <div class="container">
+    <div class="brand-header">
+      <p class="brand-eyebrow">Vision:MB — Brand 03</p>
+      <h2 class="brand-headline" data-reveal="fade-up">MontyB<br />Photography</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle" data-reveal="fade-up">A photograph is the most honest form of communication — it doesn't argue, it reveals. MontyB Photography operates across street photography, portraiture, food styling, lifestyle, editorial, and photojournalism. Every frame is composed with intentionality — capturing not just what's seen, but what's felt.</p>
+      <blockquote class="brand-philosophy" data-reveal="fade-left">"A frame held still. A story told forever."</blockquote>
+      <div class="brand-tags" data-reveal="fade-up">
+        <span class="tag">Portrait</span><span class="tag">Food</span><span class="tag">Street</span><span class="tag">Editorial</span><span class="tag">Minneapolis, MN</span><span class="tag">Travel Available</span>
+      </div>
+    </div>
+
+    <div id="portfolio">
+    <div data-reveal="fade-up" style="margin-top:4rem; margin-bottom:0.5rem;">
+      <span class="label">Portfolio</span>
+      <h3 class="brand-headline" style="font-size:clamp(1.8rem,3.5vw,2.5rem);" data-reveal="fade-up">Selected Work</h3>
+      <p class="section-subtitle" data-reveal="fade-up">A cross-section of work spanning portraiture, food, street, lifestyle, and editorial. Select an image to view details and narrative context.</p>
+    </div>
+    <div class="gallery-filters" data-reveal="fade-up">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="portrait">Portrait</button>
+      <button class="filter-btn" data-filter="food">Food</button>
+      <button class="filter-btn" data-filter="street">Street</button>
+      <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+      <button class="filter-btn" data-filter="editorial">Editorial</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-cat="portrait" data-title="The Weight of Knowing" data-desc="A contemplative portrait study exploring the tension between composure and vulnerability. Shot in natural north light, Minneapolis studio."><div class="gallery-placeholder"></div><div class="gallery-icon">◉</div><div class="gallery-label">Portrait</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Portrait</span><div class="gallery-title">The Weight of Knowing</div></div></div></div>
+      <div class="gallery-item" data-cat="food" data-title="Still Life No. 7" data-desc="Culinary still life for D.R.O.P Kitchen. Spice palette composition shot for the signature seasoning line. Moody table-top natural light."><div class="gallery-placeholder"></div><div class="gallery-icon">◈</div><div class="gallery-label">Food</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Food</span><div class="gallery-title">Still Life No. 7</div></div></div></div>
+      <div class="gallery-item" data-cat="street" data-title="Third &amp; Nicollet" data-desc="Documentary street frame from downtown Minneapolis. A single moment of pause in the urban current — shot at dusk, available light only."><div class="gallery-placeholder"></div><div class="gallery-icon">⊡</div><div class="gallery-label">Street</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Street</span><div class="gallery-title">Third &amp; Nicollet</div></div></div></div>
+      <div class="gallery-item" data-cat="lifestyle" data-title="Sunday Architecture" data-desc="Lifestyle campaign frame for a Twin Cities apparel brand. Concept-to-delivery production — creative direction, styling, and photography by MontyB."><div class="gallery-placeholder"></div><div class="gallery-icon">◎</div><div class="gallery-label">Lifestyle</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Lifestyle</span><div class="gallery-title">Sunday Architecture</div></div></div></div>
+      <div class="gallery-item" data-cat="portrait" data-title="Executive Series — Vol. I" data-desc="Professional brand portrait series for a Minneapolis-based founder. Built for press kits, LinkedIn, and editorial placement."><div class="gallery-placeholder"></div><div class="gallery-icon">◉</div><div class="gallery-label">Portrait</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Portrait</span><div class="gallery-title">Executive Series — Vol. I</div></div></div></div>
+      <div class="gallery-item" data-cat="food" data-title="Plated" data-desc="Hero dish photography for a private chef client. Full food styling, prop sourcing, and lighting design — ready for menus, social, and press."><div class="gallery-placeholder"></div><div class="gallery-icon">◈</div><div class="gallery-label">Food</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Food</span><div class="gallery-title">Plated</div></div></div></div>
+      <div class="gallery-item" data-cat="editorial" data-title="Margins" data-desc="Editorial series documenting the peripheral spaces of Minneapolis — alleys, underpasses, and the textures of a city between its own stories."><div class="gallery-placeholder"></div><div class="gallery-icon">⊞</div><div class="gallery-label">Editorial</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Editorial</span><div class="gallery-title">Margins</div></div></div></div>
+      <div class="gallery-item" data-cat="street" data-title="Motion Study" data-desc="Long-exposure street frame from the North Loop. Time rendered visible — a meditation on the speed of modern life against a still city grid."><div class="gallery-placeholder"></div><div class="gallery-icon">⊡</div><div class="gallery-label">Street</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Street</span><div class="gallery-title">Motion Study</div></div></div></div>
+      <div class="gallery-item" data-cat="food" data-title="Ritual" data-desc="Coffee ritual series for a specialty roaster client. Warm, intimate, unhurried — photographed to make the viewer feel the morning."><div class="gallery-placeholder"></div><div class="gallery-icon">◈</div><div class="gallery-label">Food</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Food</span><div class="gallery-title">Ritual</div></div></div></div>
+      <div class="gallery-item" data-cat="lifestyle" data-title="The Build" data-desc="Brand lifestyle session for a creative entrepreneur — workspace, tools, energy. Designed for website hero sections and social campaign usage."><div class="gallery-placeholder"></div><div class="gallery-icon">◎</div><div class="gallery-label">Lifestyle</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Lifestyle</span><div class="gallery-title">The Build</div></div></div></div>
+      <div class="gallery-item" data-cat="editorial" data-title="Between Sets" data-desc="Live music editorial from a Minneapolis jazz venue. Shot without flash — grain and shadow preserved as texture, not corrected as error."><div class="gallery-placeholder"></div><div class="gallery-icon">⊞</div><div class="gallery-label">Editorial</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Editorial</span><div class="gallery-title">Between Sets</div></div></div></div>
+      <div class="gallery-item" data-cat="portrait" data-title="Unbothered" data-desc="Environmental portrait — subject photographed in their own space, on their own terms. Natural light, minimal direction, maximum truth."><div class="gallery-placeholder"></div><div class="gallery-icon">◉</div><div class="gallery-label">Portrait</div><div class="gallery-overlay"><div class="gallery-meta"><span class="gallery-cat-tag">Portrait</span><div class="gallery-title">Unbothered</div></div></div></div>
+    </div>
+    </div><!-- /portfolio -->
+    
+    <div class="gallery-cta-row" data-reveal="fade-up">
+      <a href="#evaluation" class="btn btn-primary">Book a Photography Session</a>
+      <a href="mailto:montyb.photography@gmail.com" class="btn btn-outline">License an Image</a>
+    </div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image detail">
+      <div class="lightbox-inner">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+        <div class="lightbox-cat" id="lightboxCat"></div>
+        <div class="lightbox-placeholder" id="lightboxIcon"></div>
+        <div class="lightbox-title" id="lightboxTitle"></div>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <a href="#evaluation" class="btn btn-primary" style="margin-right:0.75rem;">Book This Style</a>
+        <a href="mailto:montyb.photography@gmail.com" class="btn btn-outline">License / Inquire</a>
+      </div>
+    </div>
+
+    <span class="label" data-reveal="fade-up" style="margin-top: 5rem;">Photography Services</span>
+    <div class="services-grid" data-stagger>
+      <div class="service-card">
+        <div class="service-name">Brand Portraiture</div>
+        <p class="service-desc">Professional editorial-style portraits for founders, creatives, and executives. Designed to communicate authority, approachability, and authenticity.</p>
+        <div class="service-price">From $450 — In Studio or On Location</div>
+        <a href="#evaluation" class="service-cta">Book a Session →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Food &amp; Culinary Styling</div>
+        <p class="service-desc">High-end food photography for restaurants, CPG brands, and cookbooks. Integrated closely with D.R.O.P Kitchen for optional styling and recipe development.</p>
+        <div class="service-price">Custom Quoted per Project</div>
+        <a href="#evaluation" class="service-cta">Inquire About Culinary →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Lifestyle &amp; Campaign</div>
+        <p class="service-desc">Full-scale lifestyle photography for apparel, product, and service brands. We architect the visual narrative to align with your overarching brand strategy.</p>
+        <div class="service-price">Day &amp; Half-Day Rates Available</div>
+        <a href="mailto:montyb.photography@gmail.com" class="service-cta">Request Rate Card →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Street &amp; Documentary</div>
+        <p class="service-desc">Commissioned photojournalism and documentary coverage for editorial publications, neighborhood associations, or civic organizations.</p>
+        <div class="service-price">Project Based</div>
+        <a href="mailto:montyb.photography@gmail.com" class="service-cta">Pitch a Project →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Retouching &amp; Post-Production</div>
+        <p class="service-desc">Expert color grading and subtle, natural retouching services that preserve texture and reality while elevating the final image.</p>
+        <div class="service-price">Included in all MontyB Sessions</div>
+      </div>
+      <div class="service-card">
+        <div class="service-name">Image Licensing</div>
+        <p class="service-desc">Commercial and editorial licensing of the MontyB Photography archive for publications, interior design, and digital platforms.</p>
+        <div class="service-price">Contact for Archive Access</div>
+        <a href="mailto:montyb.photography@gmail.com" class="service-cta">Inquire About Licensing →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" data-reveal="fade-up">
+      <span class="label">Client Proof</span>
+      <h2 class="section-title">The Impact.</h2>
+    </div>
+    <div class="testimonials-grid" data-stagger>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The ENFJ Prompt Pack completely changed how I communicate with my audience. It doesn't sound like AI — it sounds like the best, most articulate version of me."</p>
+        <div class="testimonial-name">Sarah J.</div>
+        <div class="testimonial-role">Executive Coach</div>
+        <div class="testimonial-product">Brand 01: The Student &amp; The Teacher</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"D.R.O.P Kitchen hosted our private anniversary dinner. The storytelling behind every course made it more than a meal. It was an absolute masterclass in hospitality."</p>
+        <div class="testimonial-name">Marcus &amp; Elena T.</div>
+        <div class="testimonial-role">Private Clients</div>
+        <div class="testimonial-product">Brand 02: D.R.O.P Kitchen</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Monty has an unbelievable eye. He captured the essence of my brand in just a few hours. The portraits aren't just photos; they communicate my exact market position."</p>
+        <div class="testimonial-name">David L.</div>
+        <div class="testimonial-role">Tech Founder</div>
+        <div class="testimonial-product">Brand 03: MontyB Photography</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="evaluation" class="section section--mid">
+  <div class="container">
+    <div class="b2b-box" data-reveal="scale">
+      <span class="label">Start The Process</span>
+      <h2 class="section-title" style="margin-bottom: 1rem;">Client Evaluation</h2>
+      <p class="section-subtitle" style="margin: 0 auto 2.5rem;">To ensure alignment across any branch of the Vision:MB ecosystem, please provide details regarding your project, timeline, and objective. We operate on a limited bandwidth to guarantee quality.</p>
+      
+      <form onsubmit="event.preventDefault(); document.getElementById('formSuccess').style.display = 'block'; this.reset();" style="text-align: left;">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="eval-name">Full Name</label>
+            <input type="text" id="eval-name" required placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="eval-email">Email Address</label>
+            <input type="email" id="eval-email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group full">
+            <label for="eval-brand">Primary Interest</label>
+            <select id="eval-brand" required>
+              <option value="" disabled selected>Select an area of focus...</option>
+              <option value="student-teacher">The Student &amp; The Teacher (Strategy / Education)</option>
+              <option value="drop-kitchen">D.R.O.P Kitchen (Private Chef / Culinary)</option>
+              <option value="montyb">MontyB Photography (Portrait / Editorial)</option>
+              <option value="ecosystem">Full Ecosystem B2B Consulting</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="eval-details">Project Details &amp; Objectives</label>
+            <textarea id="eval-details" required placeholder="Tell us about the vision, timeline, and current roadblocks..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" style="width: 100%;">Submit Evaluation</button>
+        <p id="formSuccess" style="display: none; margin-top: 1.5rem; font-size: 0.85rem; color: var(--gold); text-align: center;">Your evaluation has been received. Our team will review and respond within 48 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="brand-header" style="margin-bottom: 2rem;">
+      <h2 class="brand-headline" data-reveal="fade-up">Direct Connect</h2>
+      <p class="section-subtitle" data-reveal="fade-up">Reach out directly to specific branches of the ecosystem for specialized inquiries, press, or B2B collaborations.</p>
+    </div>
+    <div class="connect-grid" data-stagger>
+      <a href="mailto:thestudent.theteacher@gmail.com" class="connect-card">
+        <div class="connect-icon">🧠</div>
+        <div class="connect-title">Strategy &amp; Education</div>
+        <p class="connect-desc">Inquiries regarding Notion systems, AI prompt engineering, or 1-on-1 brand consulting.</p>
+        <span class="connect-action">thestudent.theteacher@gmail.com →</span>
+      </a>
+      <a href="mailto:thedropkitchen@outlook.com" class="connect-card">
+        <div class="connect-icon">🔪</div>
+        <div class="connect-title">Culinary &amp; Dining</div>
+        <p class="connect-desc">Booking private chef experiences, pop-ups, or corporate catering partnerships.</p>
+        <span class="connect-action">thedropkitchen@outlook.com →</span>
+      </a>
+      <a href="mailto:montyb.photography@gmail.com" class="connect-card">
+        <div class="connect-icon">📷</div>
+        <div class="connect-title">Photography &amp; Licensing</div>
+        <p class="connect-desc">Booking portrait sessions, editorial assignments, or requesting image licenses.</p>
+        <span class="connect-action">montyb.photography@gmail.com →</span>
+      </a>
+    </div>
+
+    <!-- Dispatch / Newsletter Waitlist -->
+    <div id="dispatch" style="margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 5rem;" data-reveal="fade-up">
+      <span class="label">The Dispatch</span>
+      <h3 class="section-title" style="font-size: 2rem;">Join the Waitlist.</h3>
+      <p class="section-subtitle">Get priority alerts for D.R.O.P Kitchen pop-ups, new Notion architecture drops, and exclusive photography print sales. No spam. Only value.</p>
+      <form class="dispatch-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color:var(--gold);font-size:0.9rem;padding:0.85rem 0;\'>Welcome to the inner circle.</p>';">
+        <input type="email" placeholder="Enter your email address" required aria-label="Email address" />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section section--dark">
+  <div class="container" style="max-width: 800px;">
+    <div style="text-align: center; margin-bottom: 3rem;" data-reveal="fade-up">
+      <span class="label">Knowledge Base</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list" data-stagger>
+      <div class="faq-item">
+        <h4 class="faq-q">Do the three brands operate independently or together?</h4>
+        <p class="faq-a">Both. While you can hire D.R.O.P Kitchen purely for a private dinner or MontyB purely for a portrait, they are designed to integrate. For example, a restaurant client might use The Student & The Teacher for brand strategy, D.R.O.P Kitchen for menu consulting, and MontyB for food photography. It is one unified architecture.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-q">Are the digital products suitable for absolute beginners?</h4>
+        <p class="faq-a">Yes. The Student & The Teacher designs systems (like the ENFJ Prompt Pack or Notion templates) specifically to reduce the learning curve. They bridge the gap between complex behavioral science and practical, everyday application.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-q">Does MontyB Photography travel outside of Minneapolis?</h4>
+        <p class="faq-a">Yes. While based in the Twin Cities, MontyB is available for national and international travel for editorial, lifestyle, and documentary assignments. Travel fees are factored into custom quotes.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-q">How do I book a private chef experience?</h4>
+        <p class="faq-a">Start by submitting the Client Evaluation form above, selecting "D.R.O.P Kitchen" as your primary interest. Detail your desired date, guest count, and any known dietary preferences. We will respond with availability and a baseline menu proposal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Vision<span class="gold">:MB</span></div>
+        <p class="footer-tagline">Three brands. One architecture. Fusing brand strategy, culinary artistry, and visual storytelling into one unified force.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Ecosystem</div>
+        <ul class="footer-links">
+          <li><a href="#student-teacher">Brand 01: Education</a></li>
+          <li><a href="#drop-kitchen">Brand 02: Culinary</a></li>
+          <li><a href="#montyb">Brand 03: Photography</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-links">
+          <li><a href="#portfolio">Portfolio Work</a></li>
+          <li><a href="#evaluation">Client Evaluation</a></li>
+          <li><a href="#contact">Direct Connect</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Digital Shop</div>
+        <ul class="footer-links">
+          <li><a href="https://learnerguide.gumroad.com/" target="_blank" rel="noopener">Gumroad Storefront</a></li>
+          <li><a href="https://growthbalancedlife-cmd.github.io/enfj-voice/" target="_blank" rel="noopener">ENFJ AI Systems</a></li>
+          <li><a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint-landing/" target="_blank" rel="noopener">Notion Architecture</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">&copy; 2026 Vision:MB Ecosystem. Built in Minneapolis, MN.</div>
+      <div class="footer-legal">All rights reserved. Photography &amp; concepts protected by copyright.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Mobile Menu Toggle ---
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileOverlay');
+    const closeBtn = document.getElementById('drawerClose');
+    const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta a');
+
+    const toggleMenu = () => {
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    drawerLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+    // --- Theme Toggle (Dark/Light Mode) ---
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    
+    // Check localStorage for saved theme, default to dark
+    const savedTheme = localStorage.getItem('visionmb-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light');
     }
 
-    /* ── MARQUEE ── */
-    .marquee-wrap { background: var(--authority); padding: 14px 0; overflow: hidden; }
-    .marquee-track { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
-    .marquee-track span {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: #F9F7F2; padding: 0 2rem;
-    }
-    .marquee-track span.dot::after { content: ' \25C6 '; opacity: 0.6; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    themeToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        const isLight = document.body.classList.contains('light');
+        localStorage.setItem('visionmb-theme', isLight ? 'light' : 'dark');
+      });
+    });
 
-    /* ── SECTION TITLES ── */
-    .ecosystem-intro { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.2;
-      margin-bottom: 1rem; color: var(--text-heading);
-    }
-    .section-body { color: var(--text-muted); line-height: 1.9; font-size: 0.95rem; font-weight: 300; }
+    // --- Intersection Observer for Scroll Animations ---
+    const revealElements = document.querySelectorAll('[data-reveal], [data-stagger]');
+    
+    const revealOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1
+    };
 
-    /* ── ECOSYSTEM GRID ── */
-    .ecosystem-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; background: var(--border); border: 1px solid var(--border);
-    }
-    .eco-card {
-      background: var(--bg-section); padding: 3rem 2.5rem;
-      transition: var(--transition); position: relative; overflow: hidden;
-    }
-    .eco-card::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 3px; height: 100%; background: var(--primary);
-      transform: scaleY(0); transform-origin: bottom; transition: var(--transition);
-    }
-    .eco-card:hover::before { transform: scaleY(1); }
-    .eco-card:hover { background: var(--bg-alt); }
-    .eco-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300;
-      color: var(--border-strong); line-height: 1; margin-bottom: 1rem;
-    }
-    .eco-brand {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.8rem;
-    }
-    .eco-name {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
-      font-weight: 600; margin-bottom: 1rem; color: var(--text-heading);
-    }
-    .eco-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.8; }
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target); // Run once
+        }
+      });
+    }, revealOptions);
 
-    /* ── BRAND HEADERS ── */
-    .brand-header {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center; margin-bottom: 5rem;
-    }
-    .brand-header.reverse { direction: rtl; }
-    .brand-header.reverse > * { direction: ltr; }
-    .brand-accent-block {
-      position: relative; padding: 3rem;
-      background: var(--bg-alt); border: 1px solid var(--border);
-    }
-    .brand-accent-block::after {
-      content: ''; position: absolute; bottom: -8px; right: -8px;
-      width: 100%; height: 100%; border: 1px solid var(--border-strong); pointer-events: none;
-    }
-    .brand-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
-    .brand-tagline {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.9rem;
-      font-weight: 300; font-style: italic; color: var(--human-light); line-height: 1.4;
-    }
-    .brand-meta {
-      margin-top: 2rem; padding-top: 1.5rem;
-      border-top: 1px solid var(--border); display: flex; gap: 2rem;
-    }
-    .brand-meta-item { font-size: 0.78rem; color: var(--text-muted); }
-    .brand-meta-item strong { display: block; color: var(--text-heading); font-size: 0.9rem; margin-bottom: 2px; }
+    revealElements.forEach(el => revealObserver.observe(el));
 
-    /* ── SERVICE CARDS ── */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem; margin: 3rem 0;
-    }
-    .service-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: 2rem; border-radius: var(--radius);
-      transition: var(--transition); position: relative;
-    }
-    .service-card:hover {
-      border-color: var(--primary); transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-    .service-icon {
-      width: 46px; height: 46px;
-      background: linear-gradient(135deg, rgba(141,161,141,0.2), rgba(141,161,141,0.05));
-      border: 1px solid rgba(141,161,141,0.3);
-      border-radius: var(--radius); display: flex; align-items: center;
-      justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem;
-    }
-    .service-title {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
-      font-weight: 600; margin-bottom: 0.6rem; color: var(--text-heading);
-    }
-    .service-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.8; }
-    .service-price { margin-top: 1rem; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--human); font-weight: 600; }
+    // --- Gallery Filtering ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    /* ── ENFJ CALLOUT ── */
-    .enfj-callout {
-      margin-top: 4rem;
-      background: linear-gradient(135deg, rgba(141,161,141,0.08), rgba(141,161,141,0.03));
-      border: 1px solid rgba(141,161,141,0.25);
-      border-radius: var(--radius); padding: 3rem; position: relative; overflow: hidden;
-    }
-    .enfj-callout::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--authority), transparent);
-    }
-    .enfj-callout-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.8rem; }
-    .enfj-callout-title {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 300; margin-bottom: 0.8rem; line-height: 1.2; color: var(--text-heading);
-    }
-    .enfj-callout-sub { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; max-width: 600px; margin-bottom: 2rem; }
-    .enfj-products-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-    .enfj-product-card {
-      background: var(--bg-body); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem;
-      transition: var(--transition); text-decoration: none; color: inherit; display: block;
-    }
-    .enfj-product-card:hover {
-      border-color: var(--primary); transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    }
-    .enfj-product-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300;
-      color: var(--border-strong); line-height: 1; margin-bottom: 0.6rem;
-    }
-    .enfj-product-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-heading); }
-    .enfj-product-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
-    .enfj-product-cta { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--primary); font-weight: 600; }
-    .enfj-product-cta::after { content: ' \2192'; }
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
 
-    /* ── TI CALLOUT ── */
-    .ti-callout {
-      margin-top: 3rem;
-      background: linear-gradient(135deg, rgba(74,93,102,0.1), rgba(74,93,102,0.04));
-      border: 1px solid rgba(74,93,102,0.35);
-      border-radius: var(--radius); padding: 3rem; position: relative; overflow: hidden;
-    }
-    .ti-callout::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--authority), var(--authority-light), transparent);
-    }
-    .ti-callout-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--authority-light); margin-bottom: 0.8rem; }
-    .ti-callout-title {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 300; margin-bottom: 0.8rem; line-height: 1.2; color: var(--text-heading);
-    }
-    .ti-callout-title em { font-style: italic; color: var(--authority-light); }
-    .ti-callout-sub { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; max-width: 640px; margin-bottom: 2rem; }
-    .ti-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
-    .ti-tier {
-      background: var(--bg-body); border: 1px solid rgba(74,93,102,0.25);
-      border-radius: var(--radius); padding: 1.2rem 1.5rem;
-    }
-    .ti-tier-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.3rem; }
-    .ti-tier-price { font-size: 0.72rem; color: var(--authority-light); font-weight: 600; letter-spacing: 0.08em; }
-    .btn-ti {
-      display: inline-block; padding: 14px 32px;
-      background: linear-gradient(135deg, var(--authority), #2E3D45);
-      color: #F9F7F2; text-decoration: none; border-radius: var(--radius);
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase; transition: var(--transition);
-    }
-    .btn-ti:hover {
-      background: linear-gradient(135deg, var(--authority-light), var(--authority));
-      transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,93,102,0.35);
-    }
+        const filter = btn.getAttribute('data-filter');
 
-    /* ── FAQ ── */
-    .faq-list { max-width: 780px; margin: 3rem auto 0; }
-    .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
-    .faq-q {
-      padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
-      font-weight: 500; transition: color 0.3s; color: var(--text-heading);
-    }
-    .faq-q:hover { color: var(--primary); }
-    .faq-icon {
-      width: 28px; height: 28px; border: 1px solid rgba(141,161,141,0.4);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: var(--primary); transition: var(--transition); flex-shrink: 0;
-    }
-    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--primary); color: var(--bg-body); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .faq-item.open .faq-a { max-height: 300px; }
-    .faq-a p { padding-bottom: 1.5rem; color: var(--text-muted); font-size: 0.88rem; line-height: 1.9; }
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-cat') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
 
-    /* ── CONNECT CARDS ── */
-    .connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .connect-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: 2.5rem 2rem; border-radius: var(--radius); text-align: center; transition: var(--transition);
-    }
-    .conn
+    // --- Lightbox ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxCat = document.getElementById('lightboxCat');
+    const lightboxIcon = document.getElementById('lightboxIcon');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Populate lightbox with data from the clicked item
+        lightboxCat.textContent = item.getAttribute('data-cat');
+        lightboxTitle.textContent = item.getAttribute('data-title');
+        lightboxDesc.textContent = item.getAttribute('data-desc');
+        
+        const iconEl = item.querySelector('.gallery-icon');
+        if(iconEl) {
+            lightboxIcon.textContent = iconEl.textContent;
+        }
+        
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = ''; // Restore background scrolling
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  });
+</script>
+</body>
+</html>
