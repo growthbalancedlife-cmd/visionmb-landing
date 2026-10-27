@@ -497,7 +497,7 @@
       <div class="brand-tags" data-reveal="fade-up">
         <span class="tag">Private Chef</span><span class="tag">Food Products</span><span class="tag">Minneapolis</span><span class="tag">Nationwide</span>
       </div>
-      <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-bottom:1rem;">Visit Brand Page →</a>
+      <a href="https://drop-kitchen-storefront.vercel.app/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-bottom:1rem;">Visit Brand Page →</a>
     </div>
     <span class="label" data-reveal="fade-up">Services &amp; Offerings</span>
     <div class="services-grid" data-stagger>
@@ -822,7 +822,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
+    const body = document.body;
+
     // --- Mobile Menu Toggle ---
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('mobileDrawer');
@@ -830,64 +831,87 @@
     const closeBtn = document.getElementById('drawerClose');
     const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta a');
 
-    const toggleMenu = () => {
-      const isOpen = drawer.classList.contains('open');
-      if (isOpen) {
-        drawer.classList.remove('open');
-        overlay.classList.remove('active');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      } else {
-        drawer.classList.add('open');
-        overlay.classList.add('active');
-        hamburger.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
+    const setDrawerState = (shouldOpen) => {
+      if (!drawer || !overlay || !hamburger) return;
+
+      drawer.classList.toggle('open', shouldOpen);
+      overlay.classList.toggle('active', shouldOpen);
+      hamburger.classList.toggle('open', shouldOpen);
+      hamburger.setAttribute('aria-expanded', String(shouldOpen));
+      drawer.setAttribute('aria-hidden', String(!shouldOpen));
+
+      if (shouldOpen) {
+        body.style.overflow = 'hidden';
+      } else if (!document.getElementById('lightbox') || !document.getElementById('lightbox').classList.contains('open')) {
+        body.style.overflow = '';
       }
     };
 
-    hamburger.addEventListener('click', toggleMenu);
-    closeBtn.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
-    drawerLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    const toggleMenu = (forceOpen) => {
+      const isOpen = drawer && drawer.classList.contains('open');
+      setDrawerState(typeof forceOpen === 'boolean' ? forceOpen : !isOpen);
+    };
+
+    if (hamburger) hamburger.addEventListener('click', () => toggleMenu());
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleMenu(false));
+    if (overlay) overlay.addEventListener('click', () => toggleMenu(false));
+    drawerLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
 
     // --- Theme Toggle (Dark/Light Mode) ---
     const themeToggles = document.querySelectorAll('.theme-toggle');
-    
-    // Check localStorage for saved theme, default to dark
-    const savedTheme = localStorage.getItem('visionmb-theme');
+
+    const applyTheme = (isLight) => {
+      body.classList.toggle('light', isLight);
+      themeToggles.forEach(toggle => {
+        toggle.setAttribute('aria-pressed', String(isLight));
+      });
+      try {
+        localStorage.setItem('visionmb-theme', isLight ? 'light' : 'dark');
+      } catch (error) {
+        // Ignore storage quota/privacy restrictions gracefully.
+      }
+    };
+
+    let savedTheme = 'dark';
+    try {
+      savedTheme = localStorage.getItem('visionmb-theme') || 'dark';
+    } catch (error) {
+      savedTheme = 'dark';
+    }
     if (savedTheme === 'light') {
-      document.body.classList.add('light');
+      applyTheme(true);
     }
 
     themeToggles.forEach(toggle => {
       toggle.addEventListener('click', () => {
-        document.body.classList.toggle('light');
-        const isLight = document.body.classList.contains('light');
-        localStorage.setItem('visionmb-theme', isLight ? 'light' : 'dark');
+        const isLight = !body.classList.contains('light');
+        applyTheme(isLight);
       });
     });
 
     // --- Intersection Observer for Scroll Animations ---
     const revealElements = document.querySelectorAll('[data-reveal], [data-stagger]');
-    
+
     const revealOptions = {
       root: null,
       rootMargin: '0px 0px -10% 0px',
       threshold: 0.1
     };
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target); // Run once
-        }
-      });
-    }, revealOptions);
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, revealOptions);
 
-    revealElements.forEach(el => revealObserver.observe(el));
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
 
     // --- Gallery Filtering ---
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -895,9 +919,7 @@
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Remove active class from all buttons
         filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
         btn.classList.add('active');
 
         const filter = btn.getAttribute('data-filter');
@@ -920,34 +942,47 @@
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxDesc = document.getElementById('lightboxDesc');
 
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.classList.remove('open');
+      if (!drawer || !drawer.classList.contains('open')) {
+        body.style.overflow = '';
+      }
+    };
+
     galleryItems.forEach(item => {
       item.addEventListener('click', () => {
-        // Populate lightbox with data from the clicked item
+        if (!lightbox || !lightboxCat || !lightboxTitle || !lightboxDesc) return;
+
         lightboxCat.textContent = item.getAttribute('data-cat');
         lightboxTitle.textContent = item.getAttribute('data-title');
         lightboxDesc.textContent = item.getAttribute('data-desc');
-        
+
         const iconEl = item.querySelector('.gallery-icon');
-        if(iconEl) {
-            lightboxIcon.textContent = iconEl.textContent;
+        if (iconEl && lightboxIcon) {
+          lightboxIcon.textContent = iconEl.textContent;
         }
-        
+
         lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        body.style.overflow = 'hidden';
       });
     });
 
-    const closeLightbox = () => {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = ''; // Restore background scrolling
-    };
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightbox) {
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    
-    // Close on background click
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if (lightbox && lightbox.classList.contains('open')) {
         closeLightbox();
+      } else if (drawer && drawer.classList.contains('open')) {
+        toggleMenu(false);
       }
     });
   });
